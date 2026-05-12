@@ -4,68 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rational Invest — Portfolio Intelligence</title>
-<link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=playfair-display:300,300i,400,400i,500,500i|ibm-plex-sans:300,400,500|ibm-plex-mono:300,400,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!--
+  DESIGN SYSTEM: Rational Invest — Beige Editorial
+  ──────────────────────────────────────────────────
+  Philosophy: "Nice and boring and rational."
+  Reference:  The Economist · Berkshire Hathaway · 
+              Swiss academic typography · Linen & ink
+  
+  Canvas:   #F4EFE6  warm parchment
+  Surface:  #EDE7DB  card surface
+  Deep:     #E5DDD0  pressed surface
+  Ink:      #1C1814  near-black warm
+  Body:     #3A332A  readable warm brown
+  Muted:    #7A6F64  supporting warm grey
+  Faint:    #B5A99A  decorative
+  Rule:     rgba(28,24,20,0.12)
+  
+  Accent:   #007A4A  deep forest green — institutional
+  Red:      #B83232  muted editorial red
+  Gold:     #8A6A20  antique gold
+  
+  Type:
+  Display: Playfair Display — serif authority
+  Body:    IBM Plex Sans — Swiss precision
+  Mono:    IBM Plex Mono — instrument readout
+-->
+
 <style>
-
-/* ══════════════════════════════════════════
-   DESIGN SYSTEM — Rational Invest Parchment
-   ══════════════════════════════════════════
-   Philosophy : "Nice and boring and rational."
-   References : The Economist · FT Weekend · 
-                Swiss academic typography · 
-                Reuters terminal printout · 
-                Linen & ink · Aged parchment
-   ══════════════════════════════════════════ */
-
 :root {
-  /* Parchment layers — warm, never cold */
-  --p0: #F7F2E8;   /* lightest — hero canvas */
-  --p1: #F2EDE3;   /* primary canvas */
-  --p2: #EBE5D9;   /* surface */
-  --p3: #E3DBCE;   /* card */
-  --p4: #D8D0C2;   /* pressed */
-  --p5: #CBBFAF;   /* deep pressed */
+  --canvas:  #F4EFE6;
+  --surf:    #EDE7DB;
+  --deep:    #E4DCCF;
+  --deeper:  #D9D0C2;
+  --press:   #CFC5B5;
 
-  /* Ink — warm blacks */
-  --ink:   #1A1612;   /* near-black */
-  --body:  #38302A;   /* body text */
-  --muted: #786C62;   /* secondary */
-  --faint: #B0A496;   /* tertiary */
-  --ghost: #CEC5B8;   /* decorative */
+  --ink:     #1C1814;
+  --body:    #3A332A;
+  --muted:   #7A6F64;
+  --faint:   #B5A99A;
+  --ghost:   #D0C8BB;
 
-  /* Rules */
-  --r1: rgba(26,22,18,.08);
-  --r2: rgba(26,22,18,.14);
-  --r3: rgba(26,22,18,.22);
-  --r4: rgba(26,22,18,.40);
+  --rule:    rgba(28,24,20,0.10);
+  --rule2:   rgba(28,24,20,0.16);
+  --rule3:   rgba(28,24,20,0.24);
 
-  /* Accent — deep forest, institutional */
-  --em:    #005C38;
-  --em2:   #004D2F;
-  --edim:  rgba(0,92,56,.07);
-  --efog:  rgba(0,92,56,.04);
+  --em:      #006B40;
+  --em2:     #005C36;
+  --em-dim:  rgba(0,107,64,0.08);
+  --em-fog:  rgba(0,107,64,0.04);
 
-  /* Status */
-  --red:  #A82A2A;
-  --gold: #7E6018;
-  --blue: #285299;
+  --red:     #B83232;
+  --gold:    #8A6A20;
+  --blue:    #2A5FA5;
 
-  /* Type */
-  --serif: 'Playfair Display', 'Georgia', serif;
-  --sans:  'IBM Plex Sans', system-ui, sans-serif;
-  --mono:  'IBM Plex Mono', 'Courier New', monospace;
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'IBM Plex Sans', system-ui, sans-serif;
+  --mono:    'IBM Plex Mono', 'Courier New', monospace;
 
-  /* Layout */
-  --pad:  72px;
-  --gutter: 32px;
+  --pad: 72px;
+  --max: 1240px;
 }
 
-/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
-html { scroll-behavior: smooth }
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
 body {
-  background: var(--p1);
+  background: var(--canvas);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
@@ -73,66 +79,61 @@ body {
   overflow-x: hidden;
   cursor: none;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-body * { cursor: none !important }
 
 /* ── CURSOR ── */
 #cur {
-  position: fixed; width: 7px; height: 7px;
+  position: fixed; width: 8px; height: 8px;
   background: var(--em); border-radius: 50%;
   pointer-events: none; z-index: 9999;
   transform: translate(-50%,-50%);
   transition: width .2s, height .2s;
 }
 #cur-r {
-  position: fixed; width: 26px; height: 26px;
-  border: 1px solid rgba(0,92,56,.3);
-  border-radius: 50%;
-  pointer-events: none; z-index: 9998;
+  position: fixed; width: 28px; height: 28px;
+  border: 1px solid rgba(0,107,64,.35);
+  border-radius: 50%; pointer-events: none; z-index: 9998;
   transform: translate(-50%,-50%);
-  transition: width .3s, height .3s, border-color .3s;
+  transition: width .28s, height .28s, border-color .28s;
 }
+body * { cursor: none !important }
 
-/* ── PAPER GRAIN ── */
-body::after {
+/* ── PAPER TEXTURE ── */
+body::before {
   content: '';
   position: fixed; inset: 0;
-  pointer-events: none; z-index: 9990; opacity: .45;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.055'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9000;
+  opacity: .35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.06'/%3E%3C/svg%3E");
 }
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px }
-::-webkit-scrollbar-track { background: var(--p2) }
+::-webkit-scrollbar-track { background: var(--canvas) }
 ::-webkit-scrollbar-thumb { background: var(--ghost) }
 
-/* ══════════════════════════
-   NAV
-══════════════════════════ */
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 500;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 var(--pad);
-  height: 58px;
-  background: rgba(242,237,227,.96);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--r2);
+  height: 60px;
+  background: rgba(244,239,230,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule2);
 }
 .logo {
   display: flex; align-items: center; gap: 11px;
   font-family: var(--mono); font-size: 10px;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--ink);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink);
 }
 .logo-sq {
-  width: 26px; height: 26px;
+  width: 28px; height: 28px;
   border: 1px solid var(--ink);
   display: flex; align-items: center; justify-content: center;
-}
-.logo-sq span {
   font-family: var(--serif); font-size: 16px;
-  font-style: italic; color: var(--ink); line-height: 1;
+  color: var(--ink); font-style: italic;
 }
 .nav-r { display: flex; align-items: center; gap: 28px }
 .nav-a {
@@ -148,89 +149,86 @@ nav {
   background: transparent; color: var(--ink);
   font-family: var(--mono); font-size: 9px;
   letter-spacing: .12em; text-transform: uppercase;
-  position: relative; overflow: hidden; transition: color .25s;
+  position: relative; overflow: hidden;
+  transition: color .25s;
 }
 .btn-nav::before {
   content: ''; position: absolute; inset: 0;
   background: var(--ink); transform: scaleX(0);
   transform-origin: left; transition: transform .3s ease;
 }
-.btn-nav:hover { color: var(--p1) }
+.btn-nav:hover { color: var(--canvas) }
 .btn-nav:hover::before { transform: scaleX(1) }
 .btn-nav > * { position: relative; z-index: 1 }
 .nav-dot {
   width: 5px; height: 5px;
   background: var(--em); border-radius: 50%;
-  animation: dotP 2s infinite;
+  animation: dotPulse 2s infinite;
 }
-@keyframes dotP { 0%,100%{opacity:1} 50%{opacity:.25} }
+@keyframes dotPulse {
+  0%,100%{ opacity:1 } 50%{ opacity:.3 }
+}
 
 /* ── TICKER ── */
 .ticker {
-  margin-top: 58px; padding: 6px 0;
+  margin-top: 60px; padding: 6px 0;
   overflow: hidden; white-space: nowrap;
-  border-bottom: 1px solid var(--r1);
-  background: var(--p2); position: relative;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surf);
+  position: relative;
 }
-.ticker::before,.ticker::after {
-  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;
+.ticker::before, .ticker::after {
+  content: ''; position: absolute;
+  top:0; bottom:0; width: 80px; z-index: 2;
 }
-.ticker::before{left:0;background:linear-gradient(90deg,var(--p2),transparent)}
-.ticker::after {right:0;background:linear-gradient(-90deg,var(--p2),transparent)}
+.ticker::before { left:0; background:linear-gradient(90deg,var(--surf),transparent) }
+.ticker::after  { right:0; background:linear-gradient(-90deg,var(--surf),transparent) }
 .tick-t {
   display: inline-flex; gap: 48px;
-  animation: tickM 45s linear infinite;
+  animation: tickMove 45s linear infinite;
 }
-@keyframes tickM{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ti{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--ghost)}
-.ti .v{color:var(--muted)}.ti .up{color:var(--em)}.ti .dn{color:var(--red)}
-.ti-sep{color:var(--ghost)}
+@keyframes tickMove { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ti {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .06em; color: var(--faint);
+}
+.ti .v  { color: var(--muted) }
+.ti .up { color: var(--em) }
+.ti .dn { color: var(--red) }
+.ti-sep { color: var(--ghost); font-size: 10px }
 
 /* ══════════════════════════
-   HERO — IRRESPONSIBLE SCALE
+   HERO
 ══════════════════════════ */
 .hero {
   min-height: 100vh;
-  display: grid; grid-template-columns: 54% 46%;
+  display: grid; grid-template-columns: 52% 48%;
   align-items: center;
-  padding: 80px var(--pad) 100px;
+  padding: 80px var(--pad);
   position: relative; overflow: hidden; gap: 60px;
 }
 
-/* Margin line — like a notebook */
-.hero-margin {
-  position: absolute; left: calc(var(--pad) - 24px);
-  top: 0; bottom: 0; width: 1px;
-  background: rgba(168,42,42,.12);
-  pointer-events: none;
-}
-
-/* Vignette — aged parchment edges */
-.vignette {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(
-    ellipse 90% 90% at 50% 50%,
-    transparent 60%,
-    rgba(26,22,18,.04) 100%
+/* Subtle ruled paper lines */
+.hero-lines {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(
+    var(--rule) 1px, transparent 1px
   );
+  background-size: 100% 40px;
+  background-position: 0 20px;
+  opacity: .4; pointer-events: none;
 }
 
 /* Corner marks */
-.mk{position:absolute;width:12px;height:12px;border-color:var(--faint);border-style:solid;border-width:0}
-.mk.tl{top:78px;left:var(--pad);border-top-width:1px;border-left-width:1px}
-.mk.tr{top:78px;right:24px;border-top-width:1px;border-right-width:1px}
-.mk.bl{bottom:40px;left:var(--pad);border-bottom-width:1px;border-left-width:1px}
-.mk.br{bottom:40px;right:24px;border-bottom-width:1px;border-right-width:1px}
-
-/* Section counter in margin */
-.margin-label {
-  position: absolute; left: 16px; top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  font-family: var(--mono); font-size: 7px;
-  letter-spacing: .2em; text-transform: uppercase;
-  color: var(--ghost); white-space: nowrap;
-  transform-origin: center center;
+.mk {
+  position: absolute; width: 14px; height: 14px;
+  border-color: var(--faint); border-style: solid; border-width: 0;
 }
+.mk.tl { top:80px; left:var(--pad); border-top-width:1px; border-left-width:1px }
+.mk.tr { top:80px; right:24px;      border-top-width:1px; border-right-width:1px }
+.mk.bl { bottom:40px; left:var(--pad); border-bottom-width:1px; border-left-width:1px }
+.mk.br { bottom:40px; right:24px;      border-bottom-width:1px; border-right-width:1px }
 
 .hero-l { position: relative; z-index: 2 }
 
@@ -238,47 +236,42 @@ nav {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono); font-size: 8px;
   letter-spacing: .22em; text-transform: uppercase;
-  color: var(--em); margin-bottom: 24px;
+  color: var(--em); margin-bottom: 28px;
   padding: 4px 12px;
-  border: 1px solid rgba(0,92,56,.22);
-  background: rgba(0,92,56,.04);
+  border: 1px solid rgba(0,107,64,.25);
+  background: rgba(0,107,64,.04);
 }
 
-/* IRRESPONSIBLE HEADLINE SIZE */
+/* Hero headline — Playfair Display, editorial authority */
 h1 {
   font-family: var(--serif);
-  font-size: clamp(60px, 7.5vw, 110px);
-  font-weight: 300;
-  line-height: .96;
-  letter-spacing: -.03em;
+  font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
   color: var(--ink);
-  margin-bottom: 0;
 }
 h1 .em-line {
   display: block;
-  font-style: italic;
   color: var(--em);
-  font-weight: 300;
-}
-.h1-rule {
-  display: block;
-  width: 48px; height: 1px;
-  background: var(--ink);
-  margin: 20px 0 18px;
+  font-style: italic;
 }
 .h1-cap {
   display: block;
   font-family: var(--sans);
-  font-size: clamp(13px, 1.3vw, 16px);
+  font-size: clamp(14px, 1.3vw, 17px);
   font-weight: 300;
   color: var(--muted);
-  line-height: 1.7;
+  letter-spacing: 0;
+  line-height: 1.65;
+  margin-top: 18px;
   margin-bottom: 32px;
 }
 
 .hero-body {
-  font-size: 14px; color: var(--body);
-  line-height: 1.9; max-width: 440px;
+  font-size: 15px; color: var(--body);
+  line-height: 1.85; max-width: 460px;
   margin-bottom: 40px; font-weight: 300;
 }
 .hero-body strong { color: var(--ink); font-weight: 500 }
@@ -288,54 +281,47 @@ h1 .em-line {
   letter-spacing: .2em; text-transform: uppercase;
   color: var(--faint); margin-bottom: 8px;
 }
-.form-row { display: flex; max-width: 420px }
+.form-row { display: flex; max-width: 440px }
 .form-row input {
-  flex: 1; padding: 12px 15px;
-  background: var(--p0);
-  border: 1px solid var(--r3); border-right: none;
+  flex: 1; padding: 12px 16px;
+  background: var(--canvas);
+  border: 1px solid var(--rule3); border-right: none;
   color: var(--ink); font-family: var(--sans);
   font-size: 13px; outline: none;
   transition: border-color .2s;
 }
-.form-row input::placeholder { color: var(--ghost) }
+.form-row input::placeholder { color: var(--faint) }
 .form-row input:focus { border-color: var(--em) }
-.btn-em {
-  padding: 12px 20px; background: var(--ink);
-  border: none; color: var(--p0);
+.form-row .btn-em {
+  padding: 12px 22px;
+  background: var(--ink); border: none;
+  color: var(--canvas);
   font-family: var(--mono); font-size: 9px;
   letter-spacing: .12em; text-transform: uppercase;
   font-weight: 400; transition: background .2s; white-space: nowrap;
 }
-.btn-em:hover { background: var(--body) }
+.form-row .btn-em:hover { background: var(--body) }
 
-/* ══════════════════════════
-   INSTRUMENT PANEL
-   Reuters terminal · 1994
-══════════════════════════ */
+/* ── SIGNAL PANEL ── */
 .hero-r { position: relative; z-index: 2 }
 
 .panel {
-  background: var(--p0);
-  border: 1px solid var(--r3);
-  position: relative;
-  box-shadow:
-    3px 3px 0 var(--p4),
-    6px 6px 0 var(--p5);
+  background: var(--surf);
+  border: 1px solid var(--rule2);
+  position: relative; overflow: hidden;
+  box-shadow: 4px 4px 0 var(--deeper),
+              8px 8px 0 var(--press);
 }
-
-/* Top rule — double line like old financial printouts */
-.panel::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+.panel-bar {
+  position: absolute; top:0; left:0; right:0; height: 2px;
   background: var(--ink);
 }
-
 .panel-hd {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 14px 9px;
-  border-bottom: 1px solid var(--r2);
-  background: var(--p2);
+  padding: 10px 14px; border-bottom: 1px solid var(--rule);
+  background: var(--deep);
 }
+.phd-l { display: flex; align-items: center; gap: 8px }
 .panel-label {
   font-family: var(--mono); font-size: 9px;
   letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
@@ -345,54 +331,54 @@ h1 .em-line {
   font-family: var(--mono); font-size: 8px;
   letter-spacing: .1em; color: var(--em);
 }
-.live-d { width: 4px; height: 4px; background: var(--em); border-radius: 50%; animation: dotP 1.5s infinite }
+.live-d {
+  width: 4px; height: 4px; background: var(--em);
+  border-radius: 50%; animation: dotPulse 1.5s infinite;
+}
 
-/* Signal rows — instrument readout style */
-.sigs { padding: 10px 12px; display: flex; flex-direction: column; gap: 3px }
+/* Signal rows */
+.sigs { padding: 10px 12px; display: flex; flex-direction: column; gap: 4px }
 .sr {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 7px 10px;
-  border-bottom: 1px solid var(--r1);
-  position: relative; transition: background .2s;
+  padding: 8px 10px; background: var(--canvas);
+  border: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+  transition: background .2s, border-color .2s;
 }
-.sr:hover { background: var(--p3) }
-.sr:last-child { border-bottom: none }
-.sr-name { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .04em }
-.sr-right { display: flex; align-items: center; gap: 10px }
-.sr-val { font-family: var(--mono); font-size: 10px; font-weight: 400 }
+.sr:hover { background: var(--deep); border-color: var(--rule2) }
+.sr-bg { position: absolute; left:0; top:0; bottom:0; opacity:.06 }
+.sr-bg.g { background: var(--em) }
+.sr-bg.r { background: var(--red) }
+.sr-bg.y { background: var(--gold) }
+.sr-name { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .04em; position: relative; z-index: 1 }
+.sr-right { display: flex; align-items: center; gap: 8px; position: relative; z-index: 1 }
+.sr-val { font-family: var(--mono); font-size: 10px }
 .sr-val.g { color: var(--em) }
 .sr-val.r { color: var(--red) }
 .sr-val.y { color: var(--gold) }
-.sr-badge { font-family: var(--mono); font-size: 7px; letter-spacing: .1em; padding: 1px 6px; border: 1px solid }
-.bg { border-color: var(--em); color: var(--em) }
-.br { border-color: var(--red); color: var(--red) }
-.by { border-color: var(--gold); color: var(--gold) }
+.sr-badge { font-family: var(--mono); font-size: 7px; letter-spacing: .1em; padding: 2px 6px }
+.bg { background: rgba(0,107,64,.08);  color: var(--em) }
+.br { background: rgba(184,50,50,.08); color: var(--red) }
+.by { background: rgba(138,106,32,.08);color: var(--gold) }
 
-/* Horizontal rule within panel */
-.panel-rule {
-  height: 1px; background: var(--r2);
-  margin: 0 12px;
-}
-
-/* AI rec — instrument printout style */
+/* AI rec */
 .ai-box {
-  margin: 10px 12px;
-  padding: 12px;
-  border: 1px solid var(--r2);
-  background: var(--p2);
-  position: relative;
+  margin: 0 12px 11px;
+  border: 1px solid rgba(0,107,64,.2);
+  background: rgba(0,107,64,.03);
+  padding: 13px; position: relative;
 }
 .ai-box::before {
-  content: 'RECOMMENDATION';
+  content: 'AI RECOMMENDATION';
   position: absolute; top: -7px; left: 10px;
-  background: var(--p2); padding: 0 6px;
+  background: var(--surf); padding: 0 6px;
   font-family: var(--mono); font-size: 7px;
   letter-spacing: .16em; color: var(--em);
 }
 .ai-msg {
   font-family: var(--mono); font-size: 10px;
-  color: var(--ink); line-height: 1.65;
-  margin-bottom: 10px; min-height: 48px;
+  color: var(--ink); line-height: 1.7;
+  margin-bottom: 10px; min-height: 50px;
 }
 .ai-msg .hl { color: var(--em); font-weight: 500 }
 .blink {
@@ -400,22 +386,23 @@ h1 .em-line {
   background: var(--em); margin-left: 1px;
   animation: blinkC 1s infinite; vertical-align: middle;
 }
-@keyframes blinkC{0%,49%{opacity:1}50%,100%{opacity:0}}
-.ai-acts { display: flex; gap: 6px }
+@keyframes blinkC { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+.ai-acts { display: flex; gap: 7px }
 .ai-a {
   font-family: var(--mono); font-size: 8px;
-  padding: 3px 9px; border: 1px solid var(--r2);
-  color: var(--muted); letter-spacing: .06em; transition: all .2s;
+  padding: 4px 9px; border: 1px solid var(--rule2);
+  color: var(--muted); letter-spacing: .06em;
+  transition: all .2s;
 }
 .ai-a:hover { border-color: var(--ink); color: var(--ink) }
-.ai-a.p { border-color: var(--em); color: var(--em) }
+.ai-a.p { border-color: var(--em); color: var(--em); background: rgba(0,107,64,.04) }
 
-/* Confidence bar */
-.conf { margin: 10px 12px 12px; display: flex; align-items: center; gap: 10px }
+/* Confidence */
+.conf { margin: 0 12px 12px; display: flex; align-items: center; gap: 10px }
 .conf-lbl { font-family: var(--mono); font-size: 7px; letter-spacing: .14em; color: var(--faint); white-space: nowrap; text-transform: uppercase }
-.conf-t { flex:1; height: 1px; background: var(--r2); position: relative; overflow: visible }
+.conf-t { flex:1; height: 2px; background: var(--ghost); position: relative; overflow: hidden }
 .conf-f {
-  position: absolute; left:0; top: -1px; height: 3px;
+  position: absolute; left:0; top:0; bottom:0;
   background: var(--em);
   transform: scaleX(0); transform-origin: left;
 }
@@ -424,138 +411,95 @@ h1 .em-line {
 /* ══════════════════════════
    SECTION CHROME
 ══════════════════════════ */
-/* Drawn ink rule */
+/* Drawn horizontal rule */
 .h-rule {
   height: 1px; background: transparent;
   margin: 0 var(--pad); position: relative;
 }
 .h-rule::after {
   content: ''; position: absolute;
-  left: 0; top: 0; height: 1px; width: 0;
+  left:0; top:0; height:1px; width:0;
   background: var(--ink);
-  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+  transition: width 1.6s cubic-bezier(.16,1,.3,1);
 }
 .h-rule.on::after { width: 100% }
 
-/* Section eyebrow */
 .s-ey {
   font-family: var(--mono); font-size: 8px;
   letter-spacing: .24em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 12px;
+  color: var(--muted); margin-bottom: 10px;
 }
-.s-ey::before {
-  content: '';
-  display: block; width: 20px; height: 1px;
-  background: var(--muted);
-}
-
-/* Section heading */
 .s-h {
-  font-family: var(--serif); font-weight: 400;
+  font-family: var(--serif);
   font-size: clamp(32px, 3.8vw, 52px);
-  letter-spacing: -.02em; line-height: 1.08;
-  color: var(--ink); margin-bottom: 16px;
+  font-weight: 400; letter-spacing: -.02em;
+  line-height: 1.08; color: var(--ink);
+  margin-bottom: 16px;
 }
 .s-h em { font-style: italic; color: var(--em) }
-
-/* Pull quote — breaks out of body */
-.pull {
-  font-family: var(--serif); font-style: italic; font-weight: 400;
-  font-size: clamp(22px, 2.6vw, 32px);
-  line-height: 1.4; letter-spacing: -.01em;
-  color: var(--ink);
-  padding: 28px 32px;
-  border-top: 2px solid var(--ink);
-  border-bottom: 1px solid var(--r2);
-  margin: 40px 0;
-  position: relative;
+.s-sub {
+  font-size: 14px; color: var(--body);
+  line-height: 1.85; font-weight: 300;
 }
-.pull::before {
-  content: attr(data-ref);
-  position: absolute; top: -1px; right: 0;
-  font-family: var(--mono); font-size: 8px;
-  letter-spacing: .12em; color: var(--faint);
-  font-style: normal;
-}
-
-/* Roman numeral margin counter */
-.sec-counter {
-  position: absolute; left: -48px; top: 0;
-  font-family: var(--serif); font-style: italic;
-  font-size: 11px; color: var(--ghost);
-  letter-spacing: .05em;
-}
-
-/* Inline rule within sections */
-.inline-rule {
-  display: block; width: 100%; height: 1px;
-  background: var(--r2); margin: 32px 0;
-}
-
-/* s-sub */
-.s-sub { font-size: 14px; color: var(--body); line-height: 1.9; font-weight: 300 }
 .s-sub strong { color: var(--ink); font-weight: 500 }
 
-/* Vignette on sections */
-.sec-vignette {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background: radial-gradient(
-    ellipse 110% 100% at 50% 50%,
-    transparent 50%,
-    rgba(26,22,18,.025) 100%
-  );
-}
-
 /* Reveal */
-.rv { opacity: 0; transform: translateY(16px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1) }
+.rv {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1),
+              transform .9s cubic-bezier(.16,1,.3,1);
+}
 .rv.on { opacity:1; transform:translateY(0) }
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.d1{transition-delay:.1s} .d2{transition-delay:.2s}
+.d3{transition-delay:.3s} .d4{transition-delay:.4s}
 
 /* ══════════════════════════
    MANIFESTO
 ══════════════════════════ */
 .manifesto {
   padding: 112px var(--pad);
-  background: var(--p2);
-  border-top: 1px solid var(--r1);
-  position: relative; overflow: hidden;
+  background: var(--surf);
+  border-top: 1px solid var(--rule);
 }
 .m-intro {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: end; margin-bottom: 64px;
+  gap: 80px; align-items: end; margin-bottom: 72px;
 }
 .m-intro h2 {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(30px,4vw,50px);
-  letter-spacing: -.02em; line-height: 1.08; color: var(--ink);
+  letter-spacing: -.02em; line-height: 1.08;
+  color: var(--ink);
 }
-.m-intro h2 em { font-style:italic; color:var(--em) }
-.m-intro p { font-size: 14px; color: var(--body); line-height: 1.9; font-weight: 300 }
+.m-intro h2 em { font-style: italic; color: var(--em) }
+.m-intro p { font-size: 14px; color: var(--body); line-height: 1.85; font-weight: 300 }
 
 .beliefs {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--r2);
+  gap: 1px; background: var(--rule);
 }
 .bel {
-  background: var(--p2); padding: 52px 44px;
-  position: relative; overflow: hidden; transition: background .35s;
+  background: var(--surf); padding: 52px 44px;
+  position: relative; overflow: hidden;
+  transition: background .35s;
 }
-.bel:hover { background: var(--p3) }
+.bel:hover { background: var(--deep) }
 .bel-sw {
   position: absolute; bottom:0; left:0; right:0; height:2px;
-  background: var(--ink); transform: scaleX(0); transform-origin: left;
+  background: var(--ink);
+  transform: scaleX(0); transform-origin: left;
   transition: transform .55s cubic-bezier(.16,1,.3,1);
 }
 .bel:hover .bel-sw { transform: scaleX(1) }
-.b-n { font-family: var(--mono); font-size: 8px; letter-spacing: .16em; color: var(--ghost); margin-bottom: 20px }
+.b-n { font-family: var(--mono); font-size: 8px; letter-spacing: .16em; color: var(--faint); margin-bottom: 20px }
 .b-q {
-  font-family: var(--serif); font-weight: 400; font-style: italic;
+  font-family: var(--serif); font-weight: 400;
   font-size: clamp(18px,2vw,24px);
   line-height: 1.3; letter-spacing: -.01em;
   color: var(--ink); margin-bottom: 16px;
+  font-style: italic;
 }
-.b-b { font-size: 13px; color: var(--body); line-height: 1.9; font-weight: 300 }
+.b-b { font-size: 13px; color: var(--body); line-height: 1.85; font-weight: 300 }
 .b-t { margin-top: 20px; font-family: var(--mono); font-size: 9px; letter-spacing: .08em; color: var(--em) }
 
 /* ══════════════════════════
@@ -563,70 +507,67 @@ h1 .em-line {
 ══════════════════════════ */
 .for-s {
   padding: 112px var(--pad);
-  background: var(--p1);
-  border-top: 1px solid var(--r1);
+  background: var(--canvas);
+  border-top: 1px solid var(--rule);
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 96px; align-items: center;
-  position: relative; overflow: hidden;
 }
-.for-l p { font-size: 14px; color: var(--body); line-height: 1.9; margin-bottom: 14px; font-weight: 300 }
+.for-l p { font-size: 14px; color: var(--body); line-height: 1.85; margin-bottom: 14px; font-weight: 300 }
 .for-l p strong { color: var(--ink); font-weight: 500 }
+
 .inv-card {
-  border: 1px solid var(--r3); padding: 36px 32px;
-  background: var(--p2); position: relative; overflow: hidden;
-  box-shadow: 4px 4px 0 var(--p4);
+  border: 1px solid var(--rule2); padding: 36px 32px;
+  background: var(--surf);
+  position: relative; overflow: hidden;
+  box-shadow: 4px 4px 0 var(--deeper);
   transition: box-shadow .3s, border-color .3s;
 }
+.inv-card:hover { box-shadow: 6px 6px 0 var(--press); border-color: var(--rule3) }
 .inv-card::before {
   content: ''; position: absolute; top:0; left:0; right:0; height:2px;
   background: var(--em); transform: scaleX(0); transform-origin: left;
-  transition: transform .45s cubic-bezier(.16,1,.3,1);
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
 }
-.inv-card:hover { box-shadow: 6px 6px 0 var(--p5); border-color: var(--r4) }
 .inv-card:hover::before { transform: scaleX(1) }
 .inv-lbl { font-family: var(--mono); font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: var(--em); margin-bottom: 14px }
-.inv-title {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(22px,2.3vw,30px);
-  letter-spacing: -.02em; line-height: 1.2;
-  color: var(--ink); margin-bottom: 16px;
-}
+.inv-title { font-family: var(--serif); font-weight: 400; font-size: clamp(22px,2.3vw,30px); letter-spacing: -.02em; line-height: 1.2; color: var(--ink); margin-bottom: 16px }
 .inv-body { font-size: 13px; color: var(--body); line-height: 1.85; font-weight: 300 }
 .inv-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px }
-.inv-tag { font-family: var(--mono); font-size: 8px; letter-spacing: .1em; padding: 3px 10px; border: 1px solid var(--r2); color: var(--muted) }
+.inv-tag { font-family: var(--mono); font-size: 8px; letter-spacing: .1em; padding: 3px 10px; border: 1px solid var(--rule2); color: var(--muted) }
 
 /* ══════════════════════════
    HOW IT WORKS
 ══════════════════════════ */
 .how-s {
   padding: 112px var(--pad);
-  background: var(--p2);
-  border-top: 1px solid var(--r1);
+  background: var(--surf);
+  border-top: 1px solid var(--rule);
 }
 .steps {
   display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 1px; background: var(--r2); margin-top: 56px;
+  gap: 1px; background: var(--rule); margin-top: 56px;
 }
 .step {
-  background: var(--p2); padding: 40px 30px;
+  background: var(--surf); padding: 40px 30px;
   position: relative; overflow: hidden; transition: background .3s;
 }
-.step:hover { background: var(--p3) }
+.step:hover { background: var(--deep) }
 .step-top {
   position: absolute; top:0; left:0; right:0; height:2px;
-  background: var(--em); transform: scaleX(0); transform-origin: left;
+  background: var(--em);
+  transform: scaleX(0); transform-origin: left;
   transition: transform .5s cubic-bezier(.16,1,.3,1);
 }
 .step:hover .step-top { transform: scaleX(1) }
-.step-n { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; color: var(--ghost); margin-bottom: 18px }
+.step-n { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; color: var(--faint); margin-bottom: 18px }
 .step-ic {
-  width: 34px; height: 34px; border: 1px solid var(--r3);
+  width: 36px; height: 36px; border: 1px solid var(--rule2);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--mono); font-size: 13px; color: var(--em);
-  margin-bottom: 18px; transition: border-color .3s;
+  color: var(--em); font-size: 14px; margin-bottom: 18px;
+  font-family: var(--mono); transition: border-color .3s, background .3s;
 }
-.step:hover .step-ic { border-color: var(--em) }
-.step h3 { font-family: var(--serif); font-weight: 400; font-size: 20px; margin-bottom: 12px; color: var(--ink) }
+.step:hover .step-ic { border-color: var(--em); background: rgba(0,107,64,.04) }
+.step h3 { font-family: var(--serif); font-weight: 400; font-size: 21px; margin-bottom: 12px; color: var(--ink) }
 .step p  { font-size: 13px; color: var(--body); line-height: 1.8; font-weight: 300 }
 .step-note { margin-top: 18px; font-family: var(--mono); font-size: 8px; color: var(--em); letter-spacing: .08em }
 
@@ -635,58 +576,53 @@ h1 .em-line {
 ══════════════════════════ */
 .ns {
   padding: 112px var(--pad);
-  background: var(--p1);
-  border-top: 1px solid var(--r1);
+  background: var(--canvas);
+  border-top: 1px solid var(--rule);
   position: relative; overflow: hidden;
 }
 .ns-inner {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 96px; align-items: center; position: relative; z-index: 1;
+  gap: 96px; align-items: center;
 }
 .ns-badge {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono); font-size: 8px;
   letter-spacing: .2em; text-transform: uppercase;
-  color: var(--em); margin-bottom: 20px;
+  color: var(--em); margin-bottom: 18px;
   padding: 4px 12px;
-  border: 1px solid rgba(0,92,56,.22);
+  border: 1px solid rgba(0,107,64,.22);
+  background: rgba(0,107,64,.03);
 }
-
-/* Large Playfair newsletter title */
 .ns-title {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(48px, 6vw, 80px);
-  letter-spacing: -.03em; line-height: .98;
-  color: var(--ink); margin-bottom: 6px;
+  font-size: clamp(40px,5vw,66px);
+  letter-spacing: -.03em; line-height: 1.0;
+  color: var(--ink); margin-bottom: 8px;
 }
 .ns-title em { font-style: italic; color: var(--em) }
-.ns-rule { display: block; width: 40px; height: 2px; background: var(--ink); margin: 20px 0 18px }
 .ns-tagline {
   font-family: var(--mono); font-size: 10px;
   letter-spacing: .06em; color: var(--muted);
-  margin-bottom: 24px; line-height: 1.6;
+  margin-bottom: 22px; line-height: 1.6;
 }
-.ns-desc { font-size: 14px; color: var(--body); line-height: 1.9; font-weight: 300; margin-bottom: 14px }
+.ns-desc { font-size: 14px; color: var(--body); line-height: 1.85; font-weight: 300; margin-bottom: 14px }
 .ns-desc strong { color: var(--ink); font-weight: 500 }
-
-/* Pull quote in newsletter */
 .ns-pull {
-  font-family: var(--serif); font-style: italic; font-weight: 400;
-  font-size: clamp(16px,1.8vw,20px);
-  line-height: 1.5; color: var(--ink);
-  padding: 20px 24px;
-  border-top: 2px solid var(--ink);
-  border-bottom: 1px solid var(--r2);
-  margin-top: 24px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .05em; color: var(--body);
+  padding: 12px 16px;
+  border-left: 2px solid var(--em);
+  background: rgba(0,107,64,.03);
+  margin-top: 20px; line-height: 1.7;
 }
-.ns-pull em { color: var(--em); font-style: normal }
+.ns-pull em { color: var(--em); font-style: normal; font-weight: 500 }
 
-/* Newsletter panel — same instrument style */
+/* Newsletter panel */
 .ns-panel {
-  background: var(--p0);
-  border: 1px solid var(--r3);
+  background: var(--surf);
+  border: 1px solid var(--rule2);
   position: relative;
-  box-shadow: 4px 4px 0 var(--p4), 7px 7px 0 var(--p5);
+  box-shadow: 4px 4px 0 var(--deeper), 8px 8px 0 var(--press);
 }
 .ns-panel::before {
   content: ''; position: absolute; top:0; left:0; right:0; height:2px;
@@ -694,18 +630,19 @@ h1 .em-line {
 }
 .ns-phd {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 14px; border-bottom: 1px solid var(--r2);
-  background: var(--p2);
+  padding: 10px 14px; border-bottom: 1px solid var(--rule);
+  background: var(--deep);
 }
 .ns-pt { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted) }
 .ns-pm { font-family: var(--mono); font-size: 8px; letter-spacing: .1em; color: var(--em) }
-.ns-issues { padding: 12px; display: flex; flex-direction: column; gap: 1px; background: var(--r1) }
+.ns-issues { padding: 12px; display: flex; flex-direction: column; gap: 7px }
 .ns-issue {
-  padding: 13px 14px; background: var(--p0);
+  padding: 12px 13px; background: var(--canvas);
+  border: 1px solid var(--rule);
+  transition: background .2s, border-color .2s;
   position: relative; overflow: hidden;
-  transition: background .2s;
 }
-.ns-issue:hover { background: var(--p3) }
+.ns-issue:hover { background: var(--deep); border-color: var(--rule2) }
 .ns-issue::before {
   content: ''; position: absolute; left:0; top:0; bottom:0; width:2px;
   background: var(--em); transform: scaleY(0); transform-origin: top;
@@ -714,41 +651,40 @@ h1 .em-line {
 .ns-issue:hover::before { transform: scaleY(1) }
 .ni-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px }
 .ni-num { font-family: var(--mono); font-size: 8px; letter-spacing: .1em; color: var(--faint) }
-.ni-tag { font-family: var(--mono); font-size: 7px; letter-spacing: .1em; padding: 1px 7px; border: 1px solid }
-.tag-ai  { border-color: var(--em);   color: var(--em) }
-.tag-mac { border-color: var(--gold); color: var(--gold) }
-.tag-fac { border-color: var(--blue); color: var(--blue) }
-.ni-title { font-family: var(--serif); font-size: 13px; font-weight: 400; color: var(--ink); margin-bottom: 4px; line-height: 1.4 }
-.ni-prev  { font-family: var(--mono); font-size: 9px; color: var(--muted); line-height: 1.5 }
+.ni-tag { font-family: var(--mono); font-size: 7px; letter-spacing: .1em; padding: 2px 7px }
+.tag-ai  { background: rgba(0,107,64,.08);  color: var(--em) }
+.tag-mac { background: rgba(138,106,32,.08); color: var(--gold) }
+.tag-fac { background: rgba(42,95,165,.08);  color: var(--blue) }
+.ni-title { font-family: var(--serif); font-size: 13px; font-weight: 400; color: var(--ink); margin-bottom: 4px; line-height: 1.35 }
+.ni-prev { font-family: var(--mono); font-size: 9px; color: var(--muted); line-height: 1.5 }
 
 /* NS CTA */
 .ns-cta {
-  margin: 12px;
+  margin: 0 12px 12px;
   padding: 14px;
-  border: 1px solid var(--r2);
-  background: var(--p2);
+  border: 1px solid rgba(0,107,64,.18);
+  background: rgba(0,107,64,.03);
   position: relative;
 }
 .ns-cta::before {
   content: 'SUBSCRIBE FREE';
   position: absolute; top: -7px; left: 10px;
-  background: var(--p2); padding: 0 6px;
+  background: var(--surf); padding: 0 6px;
   font-family: var(--mono); font-size: 7px;
   letter-spacing: .16em; color: var(--em);
 }
-.ns-form-row { display: flex; margin-bottom: 8px }
+.ns-form { display: flex; margin-bottom: 8px }
 .ns-form input {
   flex: 1; padding: 10px 13px;
-  background: var(--p0);
-  border: 1px solid var(--r2); border-right: none;
+  background: var(--canvas);
+  border: 1px solid var(--rule2); border-right: none;
   color: var(--ink); font-family: var(--sans); font-size: 12px; outline: none;
-  transition: border-color .2s;
 }
-.ns-form input::placeholder { color: var(--ghost) }
+.ns-form input::placeholder { color: var(--faint) }
 .ns-form input:focus { border-color: var(--em) }
 .ns-form button {
   padding: 10px 16px; background: var(--ink); border: none;
-  color: var(--p0); font-family: var(--mono); font-size: 8px;
+  color: var(--canvas); font-family: var(--mono); font-size: 8px;
   letter-spacing: .12em; text-transform: uppercase;
   font-weight: 400; transition: background .2s; white-space: nowrap;
 }
@@ -757,7 +693,7 @@ h1 .em-line {
 .ns-sep {
   display: flex; align-items: flex-start; gap: 8px;
   margin-top: 10px; padding-top: 10px;
-  border-top: 1px solid var(--r1);
+  border-top: 1px solid var(--rule);
   font-family: var(--mono); font-size: 8px;
   letter-spacing: .06em; color: var(--faint); line-height: 1.5;
 }
@@ -768,27 +704,34 @@ h1 .em-line {
 ══════════════════════════ */
 .factor-s {
   padding: 112px var(--pad);
-  background: var(--p2);
-  border-top: 1px solid var(--r1);
+  background: var(--surf);
+  border-top: 1px solid var(--rule);
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: start;
 }
-.f-body { font-size: 13px; color: var(--body); line-height: 1.9; margin-bottom: 13px; font-weight: 300 }
+.f-pull {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px,1.9vw,22px);
+  line-height: 1.55; letter-spacing: -.01em;
+  color: var(--ink); margin-bottom: 24px;
+  padding-left: 20px; border-left: 2px solid var(--em);
+}
+.f-body { font-size: 13px; color: var(--body); line-height: 1.85; margin-bottom: 13px; font-weight: 300 }
 .f-body strong { color: var(--ink); font-weight: 500 }
-.f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--r2) }
+.f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule) }
 .fc {
-  background: var(--p2); padding: 13px 15px;
+  background: var(--surf); padding: 13px 15px;
   display: flex; align-items: flex-start; gap: 9px;
   transition: background .2s; position: relative; overflow: hidden;
 }
-.fc:hover { background: var(--p3) }
+.fc:hover { background: var(--deep) }
 .fc::after {
   content: ''; position: absolute; bottom:0; left:0; right:0; height:1px;
   background: var(--em); transform: scaleX(0); transform-origin: left;
   transition: transform .35s;
 }
 .fc:hover::after { transform: scaleX(1) }
-.fc-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--em); flex-shrink: 0; margin-top: 5px; opacity: .55 }
+.fc-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--em); flex-shrink: 0; margin-top: 5px; opacity: .6 }
 .fc-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: .05em; color: var(--body) }
 .fc-lbl span { display: block; font-size: 8px; color: var(--faint); margin-top: 2px }
 
@@ -797,26 +740,31 @@ h1 .em-line {
 ══════════════════════════ */
 .sig-s {
   padding: 112px var(--pad);
-  background: var(--p1);
-  border-top: 1px solid var(--r1);
+  background: var(--canvas);
+  border-top: 1px solid var(--rule);
 }
 .sig-layout {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: start; margin-top: 56px;
 }
-.sg-body { font-size: 13px; color: var(--body); line-height: 1.9; margin-bottom: 13px; font-weight: 300 }
+.sg-pull {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(18px,2vw,24px);
+  line-height: 1.45; letter-spacing: -.01em;
+  color: var(--ink); margin-bottom: 24px;
+  padding-left: 20px; border-left: 2px solid var(--em);
+}
+.sg-body { font-size: 13px; color: var(--body); line-height: 1.85; margin-bottom: 13px; font-weight: 300 }
 .sg-body strong { color: var(--ink); font-weight: 500 }
-.sig-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--r2) }
+.sig-list { display: flex; flex-direction: column; gap: 3px }
 .sl {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 13px;
-  border-bottom: 1px solid var(--r1);
-  background: var(--p0);
-  transition: background .2s;
+  padding: 10px 13px; border: 1px solid var(--rule);
+  background: var(--surf);
+  transition: background .2s, border-color .2s;
   position: relative; overflow: hidden;
 }
-.sl:last-child { border-bottom: none }
-.sl:hover { background: var(--p3) }
+.sl:hover { background: var(--deep); border-color: var(--rule2) }
 .sl-a {
   position: absolute; left:0; top:0; bottom:0; width:2px;
   background: var(--em); transform: scaleY(0); transform-origin: top;
@@ -826,7 +774,9 @@ h1 .em-line {
 .sl-n { font-family: var(--mono); font-size: 10px; letter-spacing: .04em; color: var(--ink) }
 .sl-r { display: flex; align-items: center; gap: 9px }
 .sl-dot { width: 4px; height: 4px; border-radius: 50% }
-.dg{background:var(--em)}.dy{background:var(--gold)}.dr{background:var(--red)}
+.dg { background: var(--em) }
+.dy { background: var(--gold) }
+.dr { background: var(--red) }
 .sl-st { font-family: var(--mono); font-size: 9px; letter-spacing: .05em }
 .sl-fr { font-family: var(--mono); font-size: 8px; color: var(--faint); letter-spacing: .07em }
 
@@ -835,180 +785,196 @@ h1 .em-line {
 ══════════════════════════ */
 .crisis-s {
   padding: 120px var(--pad);
-  background: var(--p2);
-  border-top: 1px solid var(--r1);
+  background: var(--surf);
+  border-top: 1px solid var(--rule);
   text-align: center; position: relative;
 }
-.c-ey { font-family: var(--mono); font-size: 8px; letter-spacing: .24em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; display: inline-flex; align-items: center; gap: 10px }
-.c-ey::before,.c-ey::after { content:''; display:block; width:20px; height:1px; background:var(--red) }
+.c-ey { font-family: var(--mono); font-size: 8px; letter-spacing: .24em; text-transform: uppercase; color: var(--red); margin-bottom: 22px; display: inline-block }
 .c-h {
   font-family: var(--serif); font-weight: 400; font-style: italic;
   font-size: clamp(34px,5vw,64px);
   letter-spacing: -.02em; line-height: 1.05;
   margin-bottom: 24px; color: var(--ink);
 }
-.c-sub { font-size: 14px; color: var(--body); max-width: 580px; margin: 0 auto 64px; line-height: 1.9; font-weight: 300 }
+.c-sub { font-size: 14px; color: var(--body); max-width: 580px; margin: 0 auto 64px; line-height: 1.85; font-weight: 300 }
 .c-sub strong { color: var(--ink); font-weight: 500 }
 .scenarios {
   display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 1px; background: var(--r2);
+  gap: 1px; background: var(--rule);
   max-width: 960px; margin: 0 auto; text-align: left;
 }
 .sc {
-  background: var(--p2); padding: 28px 26px;
+  background: var(--surf); padding: 28px 26px;
   border-top: 2px solid var(--ghost);
   transition: border-color .35s, background .25s;
 }
-.sc.d:hover{border-color:var(--red);background:var(--p3)}
-.sc.c:hover{border-color:var(--gold);background:var(--p3)}
-.sc.s:hover{border-color:var(--em);background:var(--p3)}
-.sc-yr{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--faint);margin-bottom:12px}
-.sc-title{font-family:var(--serif);font-weight:400;font-size:18px;margin-bottom:9px;color:var(--ink)}
-.sc-body{font-size:12px;color:var(--body);line-height:1.75;margin-bottom:14px;font-weight:300}
-.sc-tag{font-family:var(--mono);font-size:8px;letter-spacing:.08em;padding:2px 8px;display:inline-block;border:1px solid}
-.tg-r{border-color:var(--red);color:var(--red)}
-.tg-y{border-color:var(--gold);color:var(--gold)}
-.tg-g{border-color:var(--em);color:var(--em)}
+.sc.d:hover { border-color: var(--red); background: var(--deep) }
+.sc.c:hover { border-color: var(--gold); background: var(--deep) }
+.sc.s:hover { border-color: var(--em); background: var(--deep) }
+.sc-yr    { font-family: var(--mono); font-size: 8px; letter-spacing: .12em; color: var(--faint); margin-bottom: 12px }
+.sc-title { font-family: var(--serif); font-weight: 400; font-size: 18px; margin-bottom: 9px; color: var(--ink) }
+.sc-body  { font-size: 12px; color: var(--body); line-height: 1.75; margin-bottom: 14px; font-weight: 300 }
+.sc-tag   { font-family: var(--mono); font-size: 8px; letter-spacing: .08em; padding: 3px 9px; display: inline-block }
+.tg-r { background: rgba(184,50,50,.07); color: var(--red) }
+.tg-y { background: rgba(138,106,32,.07); color: var(--gold) }
+.tg-g { background: rgba(0,107,64,.07); color: var(--em) }
 
 /* ══════════════════════════
    COST & VALUATION
 ══════════════════════════ */
 .val-s {
   padding: 112px var(--pad);
-  background: var(--p1);
-  border-top: 1px solid var(--r1);
+  background: var(--canvas);
+  border-top: 1px solid var(--rule);
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: center;
 }
-.val-rows { display: flex; flex-direction: column; gap: 1px; background: var(--r2) }
+.val-rows { display: flex; flex-direction: column; gap: 1px; background: var(--rule) }
 .vr {
-  background: var(--p2); padding: 22px 20px;
+  background: var(--surf); padding: 22px 20px;
   display: flex; align-items: flex-start; gap: 13px;
   transition: background .25s; position: relative; overflow: hidden;
 }
-.vr:hover { background: var(--p3) }
+.vr:hover { background: var(--deep) }
 .vr::before {
-  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
-  background:var(--em);transform:scaleY(0);transform-origin:top;
-  transition:transform .35s;
+  content: ''; position: absolute; left:0; top:0; bottom:0; width:2px;
+  background: var(--em); transform: scaleY(0); transform-origin: top;
+  transition: transform .35s;
 }
-.vr:hover::before{transform:scaleY(1)}
-.vr-ic{color:var(--em);font-family:var(--mono);font-size:12px;flex-shrink:0;margin-top:2px}
-.vr-text strong{display:block;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:4px}
-.vr-text span{font-size:12px;color:var(--body);line-height:1.75;font-weight:300}
+.vr:hover::before { transform: scaleY(1) }
+.vr-ic { color: var(--em); font-family: var(--mono); font-size: 12px; flex-shrink: 0; margin-top: 2px }
+.vr-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px }
+.vr-text span   { font-size: 12px; color: var(--body); line-height: 1.75; font-weight: 300 }
 
 /* ══════════════════════════
    EXPLAINABILITY
 ══════════════════════════ */
 .explain-s {
   padding: 112px var(--pad);
-  background: var(--p2);
-  border-top: 1px solid var(--r1);
+  background: var(--surf);
+  border-top: 1px solid var(--rule);
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: center;
 }
-.exp-l p{font-size:13px;color:var(--body);line-height:1.9;margin-bottom:12px;font-weight:300}
-.exp-l p strong{color:var(--ink);font-weight:500}
+.exp-l p { font-size: 13px; color: var(--body); line-height: 1.85; margin-bottom: 12px; font-weight: 300 }
+.exp-l p strong { color: var(--ink); font-weight: 500 }
 .exp-pledge {
-  margin-top:24px;padding:14px 16px;
-  border:1px solid var(--r2);background:var(--p1);
-  font-family:var(--mono);font-size:9px;
-  color:var(--body);letter-spacing:.05em;line-height:1.8;
+  margin-top: 24px; padding: 14px 16px;
+  border: 1px solid var(--rule2);
+  background: var(--canvas);
+  font-family: var(--mono); font-size: 9px;
+  color: var(--body); letter-spacing: .05em; line-height: 1.8;
 }
-.exp-pledge .em{color:var(--em)}
+.exp-pledge .em { color: var(--em) }
 .trace-box {
-  background:var(--p0);border:1px solid var(--r3);
-  padding:24px;position:relative;
-  box-shadow:4px 4px 0 var(--p4);
+  background: var(--canvas); border: 1px solid var(--rule2);
+  padding: 24px; position: relative;
+  box-shadow: 4px 4px 0 var(--deeper);
 }
 .trace-box::before {
-  content:'MODEL REASONING TRACE';
-  position:absolute;top:-7px;left:14px;
-  background:var(--p0);padding:0 7px;
-  font-family:var(--mono);font-size:7px;letter-spacing:.16em;color:var(--faint);
+  content: 'MODEL REASONING TRACE';
+  position: absolute; top: -7px; left: 14px;
+  background: var(--canvas); padding: 0 7px;
+  font-family: var(--mono); font-size: 7px; letter-spacing: .16em; color: var(--faint);
 }
-.tr{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
-.tr:last-child{margin-bottom:0}
-.tr-i{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0;margin-top:1px;border:1px solid}
-.ig{border-color:var(--em);color:var(--em)}
-.iy{border-color:var(--gold);color:var(--gold)}
-.ib{border-color:var(--blue);color:var(--blue)}
-.ir{border-color:var(--red);color:var(--red)}
-.tr-t{font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.6}
-.tr-t span{color:var(--ink)}
+.tr { display: flex; gap: 11px; margin-bottom: 13px; align-items: flex-start }
+.tr:last-child { margin-bottom: 0 }
+.tr-i {
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; flex-shrink: 0; margin-top: 1px;
+}
+.ig { background: rgba(0,107,64,.1);  color: var(--em) }
+.iy { background: rgba(138,106,32,.1); color: var(--gold) }
+.ib { background: rgba(42,95,165,.1); color: var(--blue) }
+.ir { background: rgba(184,50,50,.1); color: var(--red) }
+.tr-t { font-family: var(--mono); font-size: 10px; color: var(--muted); line-height: 1.6 }
+.tr-t span { color: var(--ink) }
 
 /* ══════════════════════════
    PHILOSOPHY
 ══════════════════════════ */
 .phil-s {
   padding: 112px var(--pad);
-  background: var(--p1);
-  border-top: 1px solid var(--r1);
+  background: var(--canvas);
+  border-top: 1px solid var(--rule);
 }
-.phil-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.phil-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 56px }
 .pc {
-  border:1px solid var(--r2);padding:30px 26px;
-  background:var(--p2);position:relative;overflow:hidden;
-  box-shadow:3px 3px 0 var(--p4);
-  transition:box-shadow .3s,transform .3s;
+  border: 1px solid var(--rule); padding: 30px 26px;
+  background: var(--surf);
+  position: relative; overflow: hidden;
+  box-shadow: 3px 3px 0 var(--deeper);
+  transition: box-shadow .3s, transform .3s;
 }
-.pc:hover{box-shadow:5px 5px 0 var(--p5);transform:translateY(-3px)}
-.pc-sw{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--em);transform:scaleX(0);transform-origin:left;transition:transform .5s}
-.pc:hover .pc-sw{transform:scaleX(1)}
-.pc-n{font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:var(--ghost);margin-bottom:18px}
-.pc-title{font-family:var(--serif);font-weight:400;font-size:19px;margin-bottom:12px;color:var(--ink)}
-.pc-body{font-size:12px;color:var(--body);line-height:1.8;font-weight:300}
-.pc-hl{margin-top:16px;padding:9px 12px;background:rgba(0,92,56,.04);border-left:2px solid var(--em);font-family:var(--mono);font-size:9px;color:var(--em);line-height:1.5}
+.pc:hover { box-shadow: 5px 5px 0 var(--press); transform: translateY(-3px) }
+.pc-sw {
+  position: absolute; bottom:0; left:0; right:0; height:2px;
+  background: var(--em);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s;
+}
+.pc:hover .pc-sw { transform: scaleX(1) }
+.pc-n { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; color: var(--faint); margin-bottom: 18px }
+.pc-title { font-family: var(--serif); font-weight: 400; font-size: 19px; margin-bottom: 12px; color: var(--ink) }
+.pc-body { font-size: 12px; color: var(--body); line-height: 1.8; font-weight: 300 }
+.pc-hl {
+  margin-top: 16px; padding: 9px 12px;
+  background: rgba(0,107,64,.04);
+  border-left: 2px solid var(--em);
+  font-family: var(--mono); font-size: 9px; color: var(--em); line-height: 1.5;
+}
 
 /* ══════════════════════════
-   CTA — FULL BEIGE
+   CTA
 ══════════════════════════ */
 .cta-s {
   padding: 130px var(--pad);
-  background: var(--p2);
-  border-top: 2px solid var(--ink);
-  text-align: center; position: relative; overflow: hidden;
+  background: var(--ink);
+  border-top: 1px solid var(--rule);
+  text-align: center; position: relative;
 }
-/* Large pull-quote style CTA headline */
+.cta-lbl { font-family: var(--mono); font-size: 8px; letter-spacing: .22em; color: rgba(244,239,230,.4); text-transform: uppercase; margin-bottom: 18px }
 .cta-h {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(42px, 5.5vw, 80px);
-  letter-spacing: -.025em; line-height: 1.0;
-  color: var(--ink); margin-bottom: 20px;
+  font-size: clamp(36px,4.5vw,62px);
+  letter-spacing: -.025em; line-height: 1.05;
+  color: var(--canvas); margin-bottom: 16px;
 }
 .cta-h em { font-style: italic; color: var(--em) }
-.cta-rule { display: block; width: 48px; height: 2px; background: var(--ink); margin: 0 auto 24px }
-.cta-lbl { font-family: var(--mono); font-size: 8px; letter-spacing: .24em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px }
-.cta-sub { font-size: 14px; color: var(--body); margin-bottom: 44px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.9; font-weight: 300 }
+.cta-sub { font-size: 14px; color: rgba(244,239,230,.65); margin-bottom: 44px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.85; font-weight: 300 }
 .cta-form { display: flex; justify-content: center; max-width: 420px; margin: 0 auto 12px }
 .cta-form input {
-  flex:1; padding:13px 16px;
-  background:var(--p0);
-  border:1px solid var(--r3);border-right:none;
-  color:var(--ink);font-family:var(--sans);font-size:13px;outline:none;
-  transition:border-color .2s;
+  flex: 1; padding: 13px 16px;
+  background: rgba(244,239,230,.08);
+  border: 1px solid rgba(244,239,230,.2); border-right: none;
+  color: var(--canvas); font-family: var(--sans); font-size: 13px; outline: none;
 }
-.cta-form input::placeholder{color:var(--ghost)}
-.cta-form input:focus{border-color:var(--em)}
-.cta-form .btn-em{padding:13px 24px;background:var(--ink);border:none;color:var(--p0);font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;transition:background .2s;white-space:nowrap}
-.cta-form .btn-em:hover{background:var(--body)}
-.cta-note{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--faint)}
+.cta-form input::placeholder { color: rgba(244,239,230,.3) }
+.cta-form .btn-em {
+  padding: 13px 24px; background: var(--em); border: none;
+  color: var(--ink); font-family: var(--mono); font-size: 9px;
+  letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 500; transition: background .2s; white-space: nowrap;
+}
+.cta-form .btn-em:hover { background: var(--em2) }
+.cta-note { font-family: var(--mono); font-size: 8px; letter-spacing: .1em; color: rgba(244,239,230,.3) }
 
 /* ══════════════════════════
    FOOTER
 ══════════════════════════ */
 footer {
   padding: 24px var(--pad);
-  border-top: 1px solid var(--r2);
+  border-top: 1px solid rgba(244,239,230,.1);
   display: flex; align-items: center; justify-content: space-between;
-  background: var(--p2);
+  background: var(--ink);
 }
-.f-logo{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.f-logo-sq{width:22px;height:22px;border:1px solid var(--muted);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;font-style:italic;color:var(--muted)}
-.f-c{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase}
-.f-links{display:flex;gap:20px}
-.f-a{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;transition:color .2s}
-.f-a:hover{color:var(--muted)}
+.f-logo { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: rgba(244,239,230,.5) }
+.f-logo-sq { width: 22px; height: 22px; border: 1px solid rgba(244,239,230,.3); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 13px; color: rgba(244,239,230,.5); font-style: italic }
+.f-c { font-family: var(--mono); font-size: 8px; letter-spacing: .12em; color: rgba(244,239,230,.25); text-transform: uppercase }
+.f-links { display: flex; gap: 20px }
+.f-a { font-family: var(--mono); font-size: 8px; letter-spacing: .1em; color: rgba(244,239,230,.3); text-transform: uppercase; transition: color .2s }
+.f-a:hover { color: rgba(244,239,230,.6) }
 </style>
 </head>
 <body>
@@ -1019,7 +985,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="logo">
-    <div class="logo-sq"><span>R</span></div>
+    <div class="logo-sq"><em>R</em></div>
     Rational Invest
   </div>
   <div class="nav-r">
@@ -1050,50 +1016,43 @@ footer {
   </div>
 </div>
 
-<!-- ══════════════════ HERO ══════════════════ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-margin"></div>
-  <div class="vignette"></div>
+  <div class="hero-lines"></div>
   <div class="mk tl"></div><div class="mk tr"></div>
   <div class="mk bl"></div><div class="mk br"></div>
 
   <div class="hero-l rv">
     <div class="ey">AI-Powered Portfolio Intelligence</div>
     <h1>
-      The less<br>you do,
+      The less you do,
       <span class="em-line">the better<br>your results.</span>
+      <span class="h1-cap">We built AI to know exactly when<br>"less" should become "something."</span>
     </h1>
-    <span class="h1-rule"></span>
-    <span class="h1-cap">We built AI to know exactly when<br>"less" should become "something."</span>
     <p class="hero-body"><strong>Rational Invest</strong> continuously monitors markets, macro conditions, risk exposures, and your personal circumstances — surfacing precise, explainable portfolio adjustments only when they genuinely matter.</p>
     <div class="form-lbl">Portfolio intelligence for investors</div>
-    <div data-fs-success style="display:none;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--em);margin-bottom:4px">✓ You're on the list. We'll be in touch.</div>
-    <div data-fs-error style="display:none;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--red);margin-bottom:4px"></div>
-    <form id="hero-form">
-      <div class="form-row">
-        <input type="email" name="email" id="hero-email" placeholder="Enter your email" required data-fs-field>
-        <button class="btn-em" type="submit" data-fs-submit-btn id="hero-btn">Join Early Access</button>
-      </div>
-      <input type="hidden" name="form_type" value="Early Access Signup">
-      <span data-fs-error="email" style="font-family:var(--mono);font-size:8px;color:var(--red);letter-spacing:.06em;display:block;margin-top:4px"></span>
-    </form>
+    <div class="form-row">
+      <input type="email" placeholder="Enter your email">
+      <button class="btn-em">Join Early Access</button>
+    </div>
   </div>
 
-  <!-- INSTRUMENT PANEL -->
   <div class="hero-r rv d2">
     <div class="panel">
+      <div class="panel-bar"></div>
       <div class="panel-hd">
-        <span class="panel-label">AI Signal Monitor — Live</span>
+        <div class="phd-l">
+          <span class="panel-label">AI Signal Monitor</span>
+        </div>
         <span class="live-badge"><span class="live-d"></span>Analysing 200+ signals</span>
       </div>
       <div class="sigs">
-        <div class="sr"><span class="sr-name">Macro Regime</span><div class="sr-right"><span class="sr-val y">Late Cycle</span><span class="sr-badge by">WATCH</span></div></div>
-        <div class="sr"><span class="sr-name">Rate Risk</span><div class="sr-right"><span class="sr-val r">Elevated ↑</span><span class="sr-badge br">ALERT</span></div></div>
-        <div class="sr"><span class="sr-name">Global Equity</span><div class="sr-right"><span class="sr-val g">Stable →</span><span class="sr-badge bg">HOLD</span></div></div>
-        <div class="sr"><span class="sr-name">Duration Exposure</span><div class="sr-right"><span class="sr-val y">Above target</span><span class="sr-badge by">REVIEW</span></div></div>
-        <div class="sr"><span class="sr-name">Factor Drift</span><div class="sr-right"><span class="sr-val g">Within range</span><span class="sr-badge bg">OK</span></div></div>
+        <div class="sr"><div class="sr-bg y" style="width:58%"></div><span class="sr-name">Macro Regime</span><div class="sr-right"><span class="sr-val y">Late Cycle</span><span class="sr-badge by">WATCH</span></div></div>
+        <div class="sr"><div class="sr-bg r" style="width:76%"></div><span class="sr-name">Rate Risk</span><div class="sr-right"><span class="sr-val r">Elevated ↑</span><span class="sr-badge br">ALERT</span></div></div>
+        <div class="sr"><div class="sr-bg g" style="width:38%"></div><span class="sr-name">Global Equity</span><div class="sr-right"><span class="sr-val g">Stable →</span><span class="sr-badge bg">HOLD</span></div></div>
+        <div class="sr"><div class="sr-bg y" style="width:64%"></div><span class="sr-name">Duration Exposure</span><div class="sr-right"><span class="sr-val y">Above target</span><span class="sr-badge by">REVIEW</span></div></div>
+        <div class="sr"><div class="sr-bg g" style="width:28%"></div><span class="sr-name">Factor Drift</span><div class="sr-right"><span class="sr-val g">Within range</span><span class="sr-badge bg">OK</span></div></div>
       </div>
-      <div class="panel-rule"></div>
       <div class="ai-box">
         <p class="ai-msg" id="ai-msg"><span class="blink"></span></p>
         <div class="ai-acts">
@@ -1110,56 +1069,24 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ MANIFESTO ══════════════ -->
+<!-- MANIFESTO -->
 <div class="h-rule" id="r1"></div>
 <section class="manifesto">
-  <div class="sec-vignette"></div>
   <div class="m-intro rv">
     <h2>A different view of investing —<br><em>and how to build for it.</em></h2>
     <p>Most of the industry is built on the idea that doing more produces better outcomes. More trades. More rebalancing. More noise dressed as intelligence. We disagree. Rational Invest is built on a different set of convictions.</p>
   </div>
-
-  <!-- PULL QUOTE — breaks grid -->
-  <div class="pull rv" data-ref="I.">
-    "Security selection and market timing attract the most attention, yet typically contribute the least to long-term outcomes."
-  </div>
-
   <div class="beliefs">
-    <div class="bel rv">
-      <div class="b-n">01 /</div>
-      <div class="b-q">The less you do, the better your results.</div>
-      <p class="b-b">The real drivers of long-term outcomes are asset allocation, factor exposure, cost management, and discipline. We automate the vigilance so you can hold firm with confidence — and act decisively when it genuinely matters.</p>
-      <div class="b-t">→ Intelligence is knowing when to act. Wisdom is knowing when not to.</div>
-      <div class="bel-sw"></div>
-    </div>
-    <div class="bel rv d1">
-      <div class="b-n">02 /</div>
-      <div class="b-q">If you never went to the party, you never have the hangover.</div>
-      <p class="b-b">The greatest wealth destruction happens in predictable conditions. Our AI monitors for signals that historically precede drawdowns — not to time the market, but to ensure your portfolio is never dangerously exposed when a regime shift arrives.</p>
-      <div class="b-t">→ Crisis protection starts before the crisis.</div>
-      <div class="bel-sw"></div>
-    </div>
-    <div class="bel rv d2">
-      <div class="b-n">03 /</div>
-      <div class="b-q">Your portfolio should evolve as the world changes.</div>
-      <p class="b-b">A portfolio built for 2020 may be poorly positioned for 2026. Risk, correlations, and macro regimes shift. So do your circumstances. Rational Invest continuously re-examines whether the assumptions underlying your allocation are still valid.</p>
-      <div class="b-t">→ Regime-aware. Continuously adaptive.</div>
-      <div class="bel-sw"></div>
-    </div>
-    <div class="bel rv d3">
-      <div class="b-n">04 /</div>
-      <div class="b-q">It's not what you buy — it's what you pay that matters.</div>
-      <p class="b-b">Transaction costs are a silent, compounding drag most investors underestimate. Entry price is a separate discipline: when an asset class or factor has become structurally overvalued, the rational position is patience. Our model tracks both independently.</p>
-      <div class="b-t">→ Cost discipline and valuation discipline are not the same thing.</div>
-      <div class="bel-sw"></div>
-    </div>
+    <div class="bel rv"><div class="b-n">01 /</div><div class="b-q">The less you do, the better your results.</div><p class="b-b">Security selection and market timing attract the most attention, yet typically contribute the least to long-term outcomes. The real drivers are asset allocation, factor exposure, cost management, and discipline. We automate the vigilance so you can hold firm with confidence.</p><div class="b-t">→ Intelligence is knowing when to act. Wisdom is knowing when not to.</div><div class="bel-sw"></div></div>
+    <div class="bel rv d1"><div class="b-n">02 /</div><div class="b-q">If you never went to the party, you never have the hangover.</div><p class="b-b">The greatest wealth destruction happens in predictable conditions. Our AI monitors for signals that historically precede drawdowns — not to time the market, but to ensure your portfolio is never dangerously exposed when a regime shift arrives.</p><div class="b-t">→ Crisis protection starts before the crisis.</div><div class="bel-sw"></div></div>
+    <div class="bel rv d2"><div class="b-n">03 /</div><div class="b-q">Your portfolio should evolve as the world changes.</div><p class="b-b">A portfolio built for 2020 may be poorly positioned for 2026. Risk, correlations, and macro regimes shift. So do your circumstances. Rational Invest continuously re-examines whether the assumptions underlying your allocation are still valid.</p><div class="b-t">→ Regime-aware. Continuously adaptive.</div><div class="bel-sw"></div></div>
+    <div class="bel rv d3"><div class="b-n">04 /</div><div class="b-q">It's not what you buy — it's what you pay that matters.</div><p class="b-b">Transaction costs are a silent, compounding drag most investors underestimate. Entry price is a separate discipline: when an asset class or factor has become structurally overvalued, the rational position is patience. Our model tracks both independently.</p><div class="b-t">→ Cost discipline and valuation discipline are not the same thing.</div><div class="bel-sw"></div></div>
   </div>
 </section>
 
-<!-- ══════════════ WHO THIS IS FOR ══════════════ -->
+<!-- WHO THIS IS FOR -->
 <div class="h-rule" id="r2"></div>
 <section class="for-s">
-  <div class="sec-vignette"></div>
   <div class="for-l rv">
     <div class="s-ey">Who this is for</div>
     <h2 class="s-h">We serve one investor.<br><em>Exceptionally.</em></h2>
@@ -1183,7 +1110,7 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<!-- HOW IT WORKS -->
 <div class="h-rule" id="r3"></div>
 <section class="how-s">
   <div class="s-ey rv">How it works</div>
@@ -1196,18 +1123,16 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ RATIONAL SIGNALS ══════════════ -->
+<!-- RATIONAL SIGNALS -->
 <div class="h-rule" id="r4"></div>
 <section class="ns">
-  <div class="sec-vignette"></div>
   <div class="ns-inner">
     <div class="rv">
       <div class="ns-badge">Free weekly newsletter</div>
       <h2 class="ns-title">Rational<br><em>Signals</em></h2>
-      <span class="ns-rule"></span>
       <p class="ns-tagline">Weekly intelligence at the intersection of AI and investment management.</p>
       <p class="ns-desc">Every week, <strong>Rational Signals</strong> cuts through the noise to surface what actually matters — the AI developments reshaping portfolio construction, the macro shifts serious investors need to understand, and the research worth your attention.</p>
-      <p class="ns-desc">No hype. No market commentary dressed as insight. Just clear, rational thinking on the forces — technological and economic — quietly rewiring how intelligent portfolios are built.</p>
+      <p class="ns-desc">No hype. No market commentary dressed as insight. Just clear, rational thinking on the forces — technological and economic — that are quietly rewiring how intelligent portfolios are built and managed.</p>
       <div class="ns-pull">For investors who believe the next decade of portfolio intelligence will be defined by those who understood <em>AI before everyone else did.</em></div>
     </div>
     <div class="rv d1">
@@ -1234,16 +1159,10 @@ footer {
           </div>
         </div>
         <div class="ns-cta">
-          <div data-fs-success style="display:none;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--em);padding:4px 0">✓ You're subscribed. First issue arrives next week.</div>
-          <div data-fs-error style="display:none;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--red);padding:4px 0"></div>
-          <form id="ns-form">
-            <div class="ns-form-row">
-              <input type="email" name="email" id="ns-email" placeholder="Enter your email" required data-fs-field>
-              <button type="submit" data-fs-submit-btn id="ns-btn">Subscribe Free</button>
-            </div>
-            <input type="hidden" name="form_type" value="Newsletter Signup — Rational Signals">
-            <span data-fs-error="email" style="font-family:var(--mono);font-size:8px;color:var(--red);letter-spacing:.06em"></span>
-          </form>
+          <div class="ns-form">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe Free</button>
+          </div>
           <div class="ns-note">Weekly. Free. Unsubscribe anytime.</div>
           <div class="ns-sep">Separate from the product early access list — sign up for both independently.</div>
         </div>
@@ -1252,13 +1171,13 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ FACTOR INVESTING ══════════════ -->
+<!-- FACTOR INVESTING -->
 <div class="h-rule" id="r5"></div>
 <section class="factor-s">
   <div class="rv">
     <div class="s-ey">Factor investing</div>
     <h2 class="s-h">The building blocks<br>of a better portfolio</h2>
-    <div class="pull" data-ref="II." style="font-size:clamp(18px,2vw,24px);margin:28px 0">"Most portfolios are built top-down — stocks, bonds, geography. Factor investing works from the ground up, identifying the underlying return drivers that actually explain performance, then constructing around those directly."</div>
+    <p class="f-pull">"Most portfolios are built top-down — stocks, bonds, geography. Factor investing works from the ground up, identifying the underlying return drivers that actually explain performance, then constructing around those directly. More precise. More transparent. Less wasted exposure."</p>
     <p class="f-body">Traditional portfolios are built with blunt instruments. Factor investing deconstructs the portfolio into its fundamental sources of return and risk. <strong>Rational Invest monitors these exposures continuously</strong>, ensuring your portfolio is doing exactly what you think it's doing.</p>
     <p class="f-body">As markets evolve, factor exposures drift silently. A balanced allocation can quietly become a concentrated bet. <strong>Our AI detects this before it costs you.</strong></p>
   </div>
@@ -1278,14 +1197,14 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ SIGNAL ENGINE ══════════════ -->
+<!-- SIGNAL ENGINE -->
 <div class="h-rule" id="r6"></div>
 <section class="sig-s">
   <div class="s-ey rv">The signal engine</div>
   <h2 class="s-h rv">Data is the new oil. <em>We refine it.</em></h2>
   <div class="sig-layout">
     <div class="rv">
-      <div class="pull" data-ref="III." style="font-size:clamp(16px,1.8vw,22px)">"Feeding richer, more timely signals into the portfolio construction model is the infrastructure advantage that compounds over decades."</div>
+      <p class="sg-pull">"Feeding richer, more timely signals into the portfolio construction model is the infrastructure advantage that compounds over decades."</p>
       <p class="sg-body">Most portfolio tools are built on lagging data — quarterly reports, annual rebalancing, yesterday's prices. Rational Invest is built on a <strong>live signal infrastructure</strong> that ingests the inputs that actually drive long-term portfolio outcomes.</p>
       <p class="sg-body">The model doesn't just watch prices. It watches the underlying conditions that cause prices to move — giving you a materially earlier view of what matters, before it's priced in.</p>
     </div>
@@ -1303,10 +1222,9 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ CRISIS ══════════════ -->
+<!-- CRISIS -->
 <div class="h-rule" id="r7"></div>
 <section class="crisis-s">
-  <div class="sec-vignette"></div>
   <div class="c-ey rv">Crisis protection</div>
   <h2 class="c-h rv">"If you never went to the party,<br>you never have the hangover."</h2>
   <p class="c-sub rv">The greatest wealth destruction happens in predictable conditions. Our AI monitors for macro and structural signals that historically precede crises — <strong>not to predict the unpredictable, but to ensure you are never recklessly exposed when conditions deteriorate.</strong></p>
@@ -1317,7 +1235,7 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ COST & VALUATION ══════════════ -->
+<!-- COST & VALUATION -->
 <div class="h-rule" id="r8"></div>
 <section class="val-s">
   <div class="rv">
@@ -1333,7 +1251,7 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ EXPLAINABILITY ══════════════ -->
+<!-- EXPLAINABILITY -->
 <div class="h-rule" id="r9"></div>
 <section class="explain-s">
   <div class="exp-l rv">
@@ -1359,7 +1277,7 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ PHILOSOPHY ══════════════ -->
+<!-- PHILOSOPHY -->
 <div class="h-rule" id="r10"></div>
 <section class="phil-s">
   <div class="s-ey rv">Our approach</div>
@@ -1371,30 +1289,22 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ CTA — FULL BEIGE ══════════════ -->
+<!-- CTA -->
 <div class="h-rule" id="r11"></div>
 <section class="cta-s">
-  <div class="sec-vignette"></div>
   <p class="cta-lbl rv">We're currently building the first version</p>
   <h2 class="cta-h rv">Be among the first<br>to experience <em>rational</em><br>portfolio intelligence.</h2>
-  <span class="cta-rule rv"></span>
   <p class="cta-sub rv">Join early access to follow our progress and be among the first investors to use Rational Invest when we launch.</p>
-  <div data-fs-success style="display:none;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--em);margin-bottom:12px">✓ You're on the list. We'll be in touch.</div>
-  <div data-fs-error style="display:none;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--red);margin-bottom:12px"></div>
-  <form id="cta-form" class="rv">
-    <div class="cta-form">
-      <input type="email" name="email" id="cta-email" placeholder="Enter your email" required data-fs-field>
-      <button class="btn-em" type="submit" data-fs-submit-btn id="cta-btn">Join Early Access</button>
-    </div>
-    <input type="hidden" name="form_type" value="Early Access Signup">
-    <span data-fs-error="email" style="font-family:var(--mono);font-size:8px;color:var(--red);letter-spacing:.06em;display:block;margin-top:4px"></span>
-  </form>
+  <div class="cta-form rv">
+    <input type="email" placeholder="Enter your email">
+    <button class="btn-em">Join Early Access</button>
+  </div>
   <p class="cta-note rv">No spam. No commitments. Early access only.</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo"><div class="f-logo-sq">R</div>Rational Invest</div>
+  <div class="f-logo"><div class="f-logo-sq"><em>R</em></div>Rational Invest</div>
   <div class="f-c">AI-powered portfolio intelligence</div>
   <div class="f-links">
     <span class="f-a">Philosophy</span>
@@ -1412,10 +1322,22 @@ document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
   cur.style.left=mx+'px';cur.style.top=my+'px';
 });
-(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop);})();
+(function loop(){
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  curR.style.left=rx+'px';curR.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
 document.querySelectorAll('button,.nav-a,.ai-a,.f-a,.fc,.sl,.sr,.bel,.step,.pc,.inv-card,.vr,.sc,.ns-issue,.btn-nav').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';curR.style.width='42px';curR.style.height='42px';curR.style.borderColor='rgba(0,92,56,.5)'});
-  el.addEventListener('mouseleave',()=>{cur.style.width='7px';cur.style.height='7px';curR.style.width='26px';curR.style.height='26px';curR.style.borderColor='rgba(0,92,56,.3)'});
+  el.addEventListener('mouseenter',()=>{
+    cur.style.width='14px';cur.style.height='14px';
+    curR.style.width='44px';curR.style.height='44px';
+    curR.style.borderColor='rgba(0,107,64,.5)';
+  });
+  el.addEventListener('mouseleave',()=>{
+    cur.style.width='8px';cur.style.height='8px';
+    curR.style.width='28px';curR.style.height='28px';
+    curR.style.borderColor='rgba(0,107,64,.35)';
+  });
 });
 
 /* AI STREAM */
@@ -1423,7 +1345,10 @@ const aiEl=document.getElementById('ai-msg');
 const msg='Rate risk and late-cycle signals detected. Recommend reducing duration 8–12% and rotating toward short-term investment grade credit. Valuation: fair value confirmed. Transaction cost: 0.12% — benefit exceeds cost. Confidence: 82%.';
 let ci=0;
 function stream(){
-  if(ci>=msg.length){aiEl.innerHTML=msg.replace('reducing duration 8–12%','<span class="hl">reducing duration 8–12%</span>')+'<span class="blink"></span>';return;}
+  if(ci>=msg.length){
+    aiEl.innerHTML=msg.replace('reducing duration 8–12%','<span class="hl">reducing duration 8–12%</span>')+'<span class="blink"></span>';
+    return;
+  }
   aiEl.textContent=msg.substring(0,ci+1);
   const b=document.createElement('span');b.className='blink';aiEl.appendChild(b);
   ci++;setTimeout(stream,22+Math.random()*18);
@@ -1435,61 +1360,14 @@ const cf=document.getElementById('conf-f');
 setTimeout(()=>{cf.style.transition='transform 1.5s cubic-bezier(.16,1,.3,1)';cf.style.transform='scaleX(1)'},2400);
 
 /* REVEAL */
+const rvEls=document.querySelectorAll('.rv');
 const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.rv').forEach(r=>ro.observe(r));
-
-/* FORMSPREE AJAX — initialise all three forms */
-window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
-formspree('initForm', { formElement: '#ns-form',   formId: 'maqvvdnr' });
-formspree('initForm', { formElement: '#hero-form',  formId: 'maqvvdnr' });
-formspree('initForm', { formElement: '#cta-form',   formId: 'maqvvdnr' });
+rvEls.forEach(r=>ro.observe(r));
 
 /* DRAWN RULES */
-document.getElementById('ns-btn').addEventListener('click', async function() {
-  const emailEl = document.getElementById('ns-email');
-  const noteEl  = document.getElementById('ns-note');
-  const btn     = document.getElementById('ns-btn');
-  const email   = emailEl.value.trim();
-
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    emailEl.style.borderColor = 'var(--red)';
-    noteEl.textContent = 'Please enter a valid email address.';
-    noteEl.style.color = 'var(--red)';
-    return;
-  }
-
-  btn.textContent = 'Subscribing...';
-  btn.disabled = true;
-  emailEl.disabled = true;
-
-  try {
-    const res = await fetch('https://rationalinvest.beehiiv.com/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-      mode: 'no-cors'
-    });
-    // no-cors means we can't read the response — but the request goes through
-    emailEl.style.display = 'none';
-    btn.style.display = 'none';
-    noteEl.textContent = '✓ You're subscribed. First issue arrives next week.';
-    noteEl.style.color = 'var(--em)';
-    noteEl.style.fontFamily = 'var(--mono)';
-    noteEl.style.fontSize = '9px';
-    noteEl.style.letterSpacing = '.08em';
-  } catch(e) {
-    btn.textContent = 'Subscribe Free';
-    btn.disabled = false;
-    emailEl.disabled = false;
-    noteEl.textContent = 'Something went wrong — try again.';
-    noteEl.style.color = 'var(--red)';
-  }
-});
-
-/* DRAWN RULES */
+const rules=document.querySelectorAll('.h-rule');
 const ro2=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.5});
-document.querySelectorAll('.h-rule').forEach(r=>ro2.observe(r));
+rules.forEach(r=>ro2.observe(r));
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
