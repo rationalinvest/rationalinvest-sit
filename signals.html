@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary SEO -->
+<title>Rational Signals — Market Intelligence & AI in Investment Management</title>
+<meta name="description" content="Rational Signals covers the macro trends shaping global investment markets and the AI developments reshaping how portfolios are built. Original analysis for rational long-term investors.">
+<meta name="keywords" content="investment management, AI investing, portfolio intelligence, macro investing, factor investing, rational investing, asset allocation">
+<meta name="author" content="Rational Invest">
+<link rel="canonical" href="https://rationalinvest.com/signals">
+
+<!-- Open Graph (LinkedIn, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rational Invest">
+<meta property="og:title" content="Rational Signals — Market Intelligence & AI in Investment Management">
+<meta property="og:description" content="Original analysis at the intersection of global markets and AI — for investors who think long-term and act rationally.">
+<meta property="og:url" content="https://rationalinvest.com/signals">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rational Signals — Rational Invest">
+<meta name="twitter:description" content="Market intelligence and the AI reshaping how investment portfolios are built. No noise. Just signal.">
+
+<!-- Structured Data — Publication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Rational Signals",
+  "description": "Market intelligence and AI developments reshaping investment management — original analysis for rational long-term investors.",
+  "url": "https://rationalinvest.com/signals",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Rational Invest",
+    "url": "https://rationalinvest.com"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Who Flew to Whom",
+      "description": "Trump's arrival in Beijing signals a multipolar transition already underway. The investment implication is not a rotation from West to East — it is a diversification across poles.",
+      "keywords": "geopolitics, asset allocation, US China, multipolar, dollar reserve currency",
+      "datePublished": "2026-05-01",
+      "author": { "@type": "Organization", "name": "Rational Invest" },
+      "publisher": { "@type": "Organization", "name": "Rational Invest" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "You Were Long the Dollar and Nobody Told You",
+      "description": "In 2025 the S&P 500 returned 17.9% in USD — yet a European investor earned just 4% in euros. Currency exposure is the risk most investors price last and feel first.",
+      "keywords": "currency risk, FX hedging, multi-asset allocation, dollar, euro, portfolio construction",
+      "datePublished": "2026-05-01",
+      "author": { "@type": "Organization", "name": "Rational Invest" },
+      "publisher": { "@type": "Organization", "name": "Rational Invest" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "35 Years to Break Even",
+      "description": "In December 1989 the Nikkei peaked at 38,915. It would not see that level again for thirty-five years. The single most important stress test of long-term investing assumptions.",
+      "keywords": "Japan, Nikkei, long-term investing, drawdown, valuation, diversification",
+      "datePublished": "2026-05-01",
+      "author": { "@type": "Organization", "name": "Rational Invest" },
+      "publisher": { "@type": "Organization", "name": "Rational Invest" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Flipped House Problem",
+      "description": "The most dangerous financial model is not the one that looks broken — it is the one that looks perfect. How AI-generated models create the illusion of understanding without the understanding itself.",
+      "keywords": "AI financial models, model risk, financial analysis, AI investing, due diligence",
+      "datePublished": "2026-05-01",
+      "author": { "@type": "Organization", "name": "Rational Invest" },
+      "publisher": { "@type": "Organization", "name": "Rational Invest" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Plumber Arrives",
+      "description": "Claude now connects natively with LSEG, FactSet, S&P Global, and Morningstar. Anthropic is building the data infrastructure to become the operating system for institutional finance.",
+      "keywords": "Anthropic, Claude AI, institutional finance, LSEG, FactSet, AI data infrastructure",
+      "datePublished": "2026-05-01",
+      "author": { "@type": "Organization", "name": "Rational Invest" },
+      "publisher": { "@type": "Organization", "name": "Rational Invest" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Operating System Play",
+      "description": "Anthropic released ten financial services agents on GitHub under Apache 2.0 — solving the black box problem for regulated finance and making a serious bid to become Wall Street's operating system.",
+      "keywords": "Anthropic, AI agents, Wall Street, GitHub, open source, institutional AI, financial services",
+      "datePublished": "2026-05-01",
+      "author": { "@type": "Organization", "name": "Rational Invest" },
+      "publisher": { "@type": "Organization", "name": "Rational Invest" }
+    }
+  ]
+}
+</script>
+
+<!-- Font preload for performance -->
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link rel="preload" href="https://fonts.bunny.net/css?family=playfair-display:300,300i,400,400i,500,500i|ibm-plex-sans:300,400,500|ibm-plex-mono:300,400,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.bunny.net/css?family=playfair-display:300,300i,400,400i,500,500i|ibm-plex-sans:300,400,500|ibm-plex-mono:300,400,500&display=swap" rel="stylesheet"></noscript>
+<style>
+
+:root {
+  --p0: #F7F2E8;
+  --p1: #F2EDE3;
+  --p2: #EBE5D9;
+  --p3: #E3DBCE;
+  --p4: #D8D0C2;
+  --p5: #CBBFAF;
+
+  --ink:   #0D0B08;
+  --body:  #231E18;
+  --muted: #5C5249;
+  --faint: #8C7E72;
+  --ghost: #CEC5B8;
+
+  --r1: rgba(13,11,8,.08);
+  --r2: rgba(13,11,8,.14);
+  --r3: rgba(13,11,8,.22);
+  --r4: rgba(13,11,8,.40);
+
+  --em:  #004A2D;
+  --em2: #003D24;
+  --red: #8C1F1F;
+  --gold: #664E12;
+  --blue: #285299;
+
+  --serif: 'Playfair Display', 'Georgia', serif;
+  --sans:  'IBM Plex Sans', system-ui, sans-serif;
+  --mono:  'IBM Plex Mono', 'Courier New', monospace;
+
+  --pad: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  background: var(--p1);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+body * { cursor: none !important }
+
+/* ── CURSOR ── */
+#cur {
+  position: fixed; width: 7px; height: 7px;
+  background: var(--em); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s;
+}
+#cur-r {
+  position: fixed; width: 26px; height: 26px;
+  border: 1px solid rgba(0,74,45,.3);
+  border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width .3s, height .3s, border-color .3s;
+}
+
+::-webkit-scrollbar { width: 4px }
+::-webkit-scrollbar-track { background: var(--p2) }
+::-webkit-scrollbar-thumb { background: var(--ghost) }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad);
+  height: 58px;
+  background: rgba(242,237,227,.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--r2);
+}
+.logo {
+  display: flex; align-items: center; gap: 11px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink);
+  text-decoration: none;
+}
+.logo-sq {
+  width: 26px; height: 26px;
+  border: 1px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-sq span {
+  font-family: var(--serif); font-size: 16px;
+  font-style: italic; color: var(--ink); line-height: 1;
+}
+.nav-r { display: flex; align-items: center; gap: 28px }
+.nav-a {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); transition: color .2s;
+  text-decoration: none;
+}
+.nav-a:hover { color: var(--ink) }
+.nav-a.active { color: var(--em) }
+.btn-nav {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 18px;
+  border: 1px solid var(--ink);
+  background: transparent; color: var(--ink);
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .12em; text-transform: uppercase;
+  position: relative; overflow: hidden; transition: color .25s;
+  text-decoration: none;
+}
+.btn-nav::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink); transform: scaleX(0);
+  transform-origin: left; transition: transform .3s ease;
+}
+.btn-nav:hover { color: var(--p1) }
+.btn-nav:hover::before { transform: scaleX(1) }
+.btn-nav > * { position: relative; z-index: 1 }
+.nav-dot {
+  width: 5px; height: 5px;
+  background: var(--em); border-radius: 50%;
+  animation: dotP 2s infinite;
+}
+@keyframes dotP { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+/* ── MASTHEAD ── */
+.masthead {
+  padding: 120px var(--pad) 72px;
+  background: var(--p1);
+  border-bottom: 1px solid var(--r2);
+  position: relative;
+}
+.masthead-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.masthead-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 8px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--em); margin-bottom: 20px;
+  padding: 4px 12px;
+  border: 1px solid rgba(0,74,45,.22);
+  background: rgba(0,74,45,.04);
+}
+.masthead-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(56px, 7vw, 96px);
+  letter-spacing: -.03em; line-height: .95;
+  color: var(--ink);
+}
+.masthead-title em { font-style: italic; color: var(--em); font-weight: 300; }
+.masthead-rule { display: block; width: 48px; height: 2px; background: var(--ink); margin: 24px 0 20px; }
+.masthead-tagline {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .06em; color: var(--body);
+  line-height: 1.7; margin-bottom: 0;
+}
+.masthead-desc {
+  font-size: 14px; color: var(--body);
+  line-height: 1.9; font-weight: 300;
+  margin-bottom: 20px;
+}
+.masthead-desc strong { color: var(--ink); font-weight: 500; }
+
+/* Filter bar */
+.filter-bar {
+  display: flex; align-items: center; gap: 6px;
+  margin-top: 28px;
+}
+.filter-btn {
+  font-family: var(--mono); font-size: 8px;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 14px;
+  border: 1px solid var(--r3);
+  background: transparent; color: var(--muted);
+  transition: all .2s; position: relative; overflow: hidden;
+}
+.filter-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink); transform: scaleX(0);
+  transform-origin: left; transition: transform .25s ease;
+}
+.filter-btn:hover { color: var(--p1) }
+.filter-btn:hover::before { transform: scaleX(1) }
+.filter-btn span { position: relative; z-index: 1; }
+.filter-btn.on { background: var(--ink); color: var(--p0); border-color: var(--ink); }
+.filter-sep { width: 1px; height: 14px; background: var(--r3); margin: 0 4px; }
+
+/* Subscribe panel */
+.masthead-sub {
+  background: var(--p2);
+  border: 1px solid var(--r3);
+  padding: 28px 28px;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--p4);
+  align-self: start;
+  margin-top: 16px;
+}
+.masthead-sub::before {
+  content: 'SUBSCRIBE';
+  position: absolute; top: -7px; left: 14px;
+  background: var(--p2); padding: 0 7px;
+  font-family: var(--mono); font-size: 7px;
+  letter-spacing: .16em; color: var(--em);
+}
+.sub-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 22px; letter-spacing: -.01em;
+  color: var(--ink); margin-bottom: 10px; line-height: 1.2;
+}
+.sub-desc {
+  font-size: 13px; color: var(--body);
+  line-height: 1.8; font-weight: 400; margin-bottom: 18px;
+}
+.sub-form { display: flex; flex-direction: column; gap: 0; }
+.sub-form input {
+  padding: 11px 14px;
+  background: var(--p1);
+  border: 1px solid var(--r3); border-bottom: none;
+  color: var(--ink); font-family: var(--sans);
+  font-size: 13px; outline: none;
+  transition: border-color .2s;
+}
+.sub-form input::placeholder { color: var(--ghost); }
+.sub-form input:focus { border-color: var(--em); }
+.sub-form button {
+  padding: 11px 16px;
+  background: var(--ink); border: 1px solid var(--ink);
+  color: var(--p0); font-family: var(--mono);
+  font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 600;
+  transition: background .2s;
+}
+.sub-form button:hover { background: var(--body); }
+.sub-note {
+  margin-top: 10px;
+  font-family: var(--mono); font-size: 8px;
+  letter-spacing: .08em; color: var(--faint);
+}
+
+/* ── FEED ── */
+.feed {
+  background: var(--p2);
+  border-top: 1px solid var(--r2);
+  padding-bottom: 120px;
+}
+.feed-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* Story */
+.story {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--r2);
+  position: relative;
+}
+.story:first-child { padding-top: 64px; }
+.story:last-child { border-bottom: none; }
+
+.story-cat {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--body); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.story-cat::before {
+  content: ''; display: block;
+  width: 16px; height: 1px; background: var(--body);
+}
+.cat-tag {
+  display: inline-block;
+  font-family: var(--mono); font-size: 7px;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 2px 8px; border: 1px solid;
+  margin-left: 6px;
+}
+.story-date {
+  font-family: var(--mono); font-size: 8px;
+  letter-spacing: .1em; color: var(--muted);
+  margin-left: 8px; font-weight: 600;
+}
+.story-date::before { content: '·'; margin-right: 8px; color: var(--ghost); }
+.cat-markets { border-color: var(--gold); color: var(--gold); }
+.cat-ai { border-color: var(--em); color: var(--em); }
+
+.story-h {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -.02em; line-height: 1.1;
+  color: var(--ink); margin-bottom: 20px;
+}
+
+.story-body {
+  font-family: var(--serif); font-size: 17px;
+  line-height: 1.9; color: var(--ink);
+  font-weight: 400; max-width: 680px;
+}
+.story-body p { margin-bottom: 20px; }
+.story-body p:last-child { margin-bottom: 0; }
+
+.chart-block::before {
+  content: 'CHART OF THE ISSUE';
+  position: absolute; top: -7px; left: 14px;
+  background: var(--p2); padding: 0 7px;
+  font-family: var(--mono); font-size: 7px;
+  letter-spacing: .16em; color: var(--faint);
+}
+.chart-caption {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .1em; color: var(--em);
+  text-transform: uppercase;
+}
+
+/* Section divider */
+.section-div {
+  display: flex; align-items: center; gap: 16px;
+  padding: 48px 0 0;
+  margin-bottom: -8px;
+}
+.section-div-rule { flex: 1; height: 3px; background: var(--em); }
+.section-div-label {
+  font-family: var(--mono); font-size: 8px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--em); white-space: nowrap;
+}
+
+/* Sign off */
+.signoff {
+  padding: 48px 0 0;
+  border-top: 1px solid var(--r2);
+  margin-top: 16px;
+}
+.signoff-text {
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; color: var(--body); line-height: 1.6;
+  margin-bottom: 10px;
+}
+.signoff-byline {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .16em; color: var(--em);
+  text-transform: uppercase; font-weight: 600;
+}
+
+/* Reveal */
+.rv { opacity: 0; transform: translateY(16px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+.rv.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+
+/* ── FOOTER ── */
+footer {
+  padding: 24px var(--pad);
+  border-top: 1px solid var(--r2);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--p2);
+}
+.f-logo{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--body);text-decoration:none;}
+.f-logo-sq{width:22px;height:22px;border:1px solid var(--body);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;font-style:italic;color:var(--body);}
+.f-c{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;}
+.f-links{display:flex;gap:20px;}
+.f-a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;transition:color .2s;text-decoration:none;}
+.f-a:hover{color:var(--ink);}
+
+/* ── SUCCESS MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 8000;
+  background: rgba(13,11,8,.55);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s ease;
+}
+.modal-overlay.show { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--p0);
+  border: 1px solid var(--r3);
+  border-top: 3px solid var(--em);
+  padding: 48px 52px;
+  max-width: 480px; width: 90%;
+  position: relative;
+  box-shadow: 6px 6px 0 var(--p4), 12px 12px 0 var(--p5);
+  transform: translateY(16px);
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+  text-align: center;
+}
+.modal-overlay.show .modal-box { transform: translateY(0); }
+.modal-icon {
+  width: 48px; height: 48px; border: 1px solid var(--em);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 20px; color: var(--em);
+  margin: 0 auto 24px;
+}
+.modal-title { font-family: var(--serif); font-weight: 400; font-size: 26px; letter-spacing: -.02em; color: var(--ink); margin-bottom: 12px; }
+.modal-body { font-size: 13px; color: var(--body); line-height: 1.85; font-weight: 300; margin-bottom: 28px; }
+.modal-close {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; border: 1px solid var(--ink);
+  background: transparent; color: var(--ink);
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .14em; text-transform: uppercase;
+  position: relative; overflow: hidden; transition: color .25s;
+}
+.modal-close::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink); transform: scaleX(0);
+  transform-origin: left; transition: transform .3s ease;
+}
+.modal-close:hover { color: var(--p0); }
+.modal-close:hover::before { transform: scaleX(1); }
+.modal-close span { position: relative; z-index: 1; }
+.modal-meta { margin-top: 16px; font-family: var(--mono); font-size: 8px; letter-spacing: .1em; color: var(--faint); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  :root { --pad: 24px; }
+  nav { padding: 0 20px; height: 52px; }
+  .nav-r .nav-a { display: none; }
+  .btn-nav { padding: 7px 14px; font-size: 8px; }
+  .masthead { padding: 90px 20px 48px; }
+  .masthead-inner { grid-template-columns: 1fr; gap: 40px; }
+  .masthead-title { font-size: clamp(48px, 13vw, 72px); }
+  .feed { padding-bottom: 60px; }
+  .feed-inner { padding: 0 20px; }
+  .story-body { font-size: 16px; }
+  footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+  .f-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-icon">✓</div>
+    <h3 class="modal-title">You're subscribed.</h3>
+    <p class="modal-body">Welcome to Rational Signals. Market intelligence and the AI reshaping investment management — no noise, just signal.</p>
+    <button class="modal-close" id="modal-close-btn"><span>Close</span></button>
+    <p class="modal-meta">rational signals</p>
+  </div>
+</div>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-sq"><span>R</span></div>
+    Rational Invest
+  </a>
+  <div class="nav-r">
+    <a class="nav-a" href="index.html#philosophy">Philosophy</a>
+    <a class="nav-a" href="index.html#signals">Signals</a>
+    <a class="nav-a active" href="signals.html">Newsletter</a>
+    <a href="index.html#early-access" class="btn-nav"><span class="nav-dot"></span><span>Early Access</span></a>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="rv">
+      <div class="masthead-badge">Newsletter</div>
+      <h1 class="masthead-title">Rational<br><em>Signals</em></h1>
+      <span class="masthead-rule"></span>
+      <p class="masthead-tagline">Market intelligence and the AI reshaping<br>how investment portfolios are built.</p>
+      <div class="filter-bar">
+        <button class="filter-btn on" data-filter="all"><span>All</span></button>
+        <span class="filter-sep"></span>
+        <button class="filter-btn" data-filter="markets"><span>Markets</span></button>
+        <span class="filter-sep"></span>
+        <button class="filter-btn" data-filter="ai"><span>AI</span></button>
+      </div>
+    </div>
+    <div class="rv d1">
+      <div class="masthead-sub">
+        <div class="sub-title">Get it in your inbox.</div>
+        <p class="sub-desc">Market intelligence for rational investors — and the AI developments reshaping how portfolios are built. No hype. No noise. Just signal.</p>        <form class="sub-form" id="signals-form">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe to Rational Signals</button>
+          <input type="hidden" name="form_type" value="Newsletter Signup — Rational Signals">
+        </form>
+        <p class="sub-note">Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEED -->
+<div class="feed">
+<div class="feed-inner">
+
+  <!-- ─── STORY 1: Who Flew to Whom ─── -->
+  <article class="story rv" data-cat="markets">
+    <div class="story-cat">
+      Geopolitics · Asset Allocation
+      <span class="cat-tag cat-markets">Markets</span><span class="story-date">May 2026</span>
+    </div>
+    <h2 class="story-h">Who Flew to Whom</h2>
+    <div class="story-body">
+      <p>Trump's arrival in Beijing this week — the first US president on Chinese soil in nearly a decade — is the kind of event that looks like diplomacy but functions as a signal. A declining dollar reserve currency power, debt-to-GDP north of 125%, and a geopolitical transition already underway, all pointing to the same portfolio conclusion — that a US-centric 60/40 allocation is a bet on American monetary hegemony persisting indefinitely, which history flatly does not support.</p>
+      <p>When the sitting US president flies to the Great Hall of the People to negotiate trade terms, rare earth access, and Iran policy from a position of visible need, that's not a diplomatic visit — it's a data point. The question for investors isn't whether the transition is happening; it's whether your asset allocation has caught up with the geography.</p>
+      <p>Our base case is a multipolar transition: US dominance eroding at the margin, Chinese power expanding but constrained by structural headwinds. The investment implication is not a rotation from West to East — it is a diversification across poles.</p>
+    </div>
+  </article>
+
+  <!-- ─── STORY 2: You Were Long the Dollar ─── -->
+  <article class="story rv" data-cat="markets">
+    <div class="story-cat">
+      Currency · Multi-Asset Allocation
+      <span class="cat-tag cat-markets">Markets</span><span class="story-date">May 2026</span>
+    </div>
+    <h2 class="story-h">You Were Long the Dollar and Nobody Told You</h2>
+    <div class="story-body">
+      <p>In long-term multi-asset allocation, currency exposure is the risk that most investors price last and feel first. 2025 provided a precise illustration. The S&amp;P 500 delivered a total return of 17.9% in US dollar terms — a strong year by any historical standard. Yet a European investor holding the same index without currency hedging earned approximately 4% in euro terms, after the dollar weakened 13% against the euro over the same twelve months. Same index. Same companies. Same earnings growth. Roughly one quarter of the return in the currency that actually matters to a European investor.</p>
+      <p>It is true that over very long horizons — fifteen to twenty years or more — currency fluctuations between major developed market pairs tend to mean revert, and the case for leaving foreign equity unhedged over a full investment cycle is academically defensible. But mean reversion at the portfolio level does not solve the problem at the investor level. Most investors have real liability points along the way — a retirement date, a drawdown period, a property purchase — where the exchange rate is not a theoretical number but an actual one.</p>
+      <p>The correct anchor for any currency framework is not the base currency of the portfolio, but the currency in which the end client has, or will have in retirement, their primary expenses. A multi-asset portfolio without an explicit liability-currency framework carries hidden concentration risk, because every unhedged foreign asset is simultaneously a bet on that asset and a bet on its currency relative to what the money is ultimately for. Currency risk should be understood, sized, and managed.</p>
+    </div>
+  </article>
+
+  <!-- ─── STORY 3: 35 Years to Break Even ─── -->
+  <article class="story rv" data-cat="markets">
+    <div class="story-cat">
+      Japan · Long-Term Investing
+      <span class="cat-tag cat-markets">Markets</span><span class="story-date">May 2026</span>
+    </div>
+    <h2 class="story-h">35 Years to Break Even</h2>
+    <div class="story-body">
+      <p>In December 1989, the Japanese Nikkei 225 peaked at 38,915. It would not see that level again for thirty-five years. An investor who bought at the top in 1989 waited through the entire careers of an entire generation of fund managers, through the dot-com boom and bust, through the global financial crisis, through Abenomics, through a global pandemic — and finally broke even in 2024. Not a profit. Even. Thirty-five years of patience rewarded with a return to zero in nominal terms, and a deeply negative return once inflation is accounted for.</p>
+      <p>The Japan story is not a historical curiosity. It is the single most important stress test of every assumption that underpins conventional long-term investing — that markets always recover, that time in the market beats timing the market, that patience is always rewarded. In Japan's case, patience was necessary but not sufficient. What mattered was not how long you held, but what you paid when you bought, what you owned when you bought it, and whether your portfolio was sufficiently diversified across geographies and asset classes to survive a generation-long drawdown in a single market.</p>
+      <p>This is the core of the Rational Invest philosophy. We do not believe that long-term investing means buying an index, closing your eyes, and waiting. We believe it means building portfolios that are genuinely diversified across asset classes and geographies, priced rationally at entry, and constructed with an explicit understanding of the scenarios in which conventional assumptions fail. Japan in 1989 was not an accident. It was a market priced for perfection — extreme valuations, extreme concentration, extreme consensus — and the thirty-five years that followed were the price of that perfection. The rational investor's job is not to predict when the next Japan will happen. It is to ensure that when it does, their portfolio was never built on the assumption that it couldn't.</p>
+    </div>
+
+  </article>
+
+  <!-- ─── STORY 4: The Flipped House Problem ─── -->
+  <article class="story rv" data-cat="ai">
+    <div class="story-cat">
+      AI Models · Financial Risk
+      <span class="cat-tag cat-ai">AI</span><span class="story-date">May 2026</span>
+    </div>
+    <h2 class="story-h">The Flipped House Problem</h2>
+    <div class="story-body">
+      <p>The most dangerous financial model is not the one that looks broken — it is the one that looks perfect. AI-generated models have introduced what we call the flipped house problem: a structurally compromised asset dressed in fresh paint. Just as a flipped house is a property purchased cheaply, cosmetically renovated to mask underlying defects — cracked foundations, faulty wiring, compromised plumbing — and sold at a premium to a buyer seduced by surface appeal, AI-generated models present polished formatting, credible logic flows, and professional layouts that create trust before the audit has begun.</p>
+      <p>Beneath the surface, balance sheets fail to balance, formulas are hardcoded rather than dynamic, and circular references lurk in revolving credit structures waiting to detonate under scenario stress. The deeper risk is not technical — it is cognitive. When a human builds a model, they own every assumption and every link; when an AI builds it, the analyst inherits the illusion of understanding without the understanding itself.</p>
+      <p>Rational investors should treat AI-generated financial models exactly as they would a flipped house: conduct a full structural inspection before committing capital, and never confuse cosmetic confidence for structural integrity.</p>
+    </div>
+  </article>
+
+  <!-- ─── STORY 5: The Plumber Arrives ─── -->
+  <article class="story rv" data-cat="ai">
+    <div class="story-cat">
+      Anthropic · Institutional Finance
+      <span class="cat-tag cat-ai">AI</span><span class="story-date">May 2026</span>
+    </div>
+    <h2 class="story-h">The Plumber Arrives</h2>
+    <div class="story-body">
+      <p>If the flipped house problem is the risk, verified data infrastructure is the fix — and the plumbing is finally being installed at scale. Claude now connects natively with LSEG, FactSet, S&amp;P Global, and Morningstar, and has expanded further to include Moody's credit data alongside other data feeds. OpenAI, Google, and others are following suit.</p>
+      <p>A model anchored to these verified, auditable data stacks — with every output source-attributed and traceable — is a structurally different product from one that has hallucinated its way to a polished spreadsheet. The announcement, made at Anthropic's financial services briefing in New York on May 5th alongside JPMorgan CEO Jamie Dimon, signals that Anthropic is not merely selling AI software to banks — it is building the data infrastructure and deployment layer to become the operating system for institutional finance.</p>
+      <p>The rational framework has not changed: AI in investment management is only as trustworthy as the data beneath it. What has changed is that the data is now there.</p>
+    </div>
+  </article>
+
+  <!-- ─── STORY 6: The Operating System Play ─── -->
+  <article class="story rv" data-cat="ai">
+    <div class="story-cat">
+      Anthropic · GitHub · Open Source
+      <span class="cat-tag cat-ai">AI</span><span class="story-date">May 2026</span>
+    </div>
+    <h2 class="story-h">The Operating System Play</h2>
+    <div class="story-body">
+      <p>When Anthropic released its ten financial services agents last week, the most revealing detail was not the agents themselves — it was where they published them. Not behind a paywall, not inside a proprietary platform, but on GitHub, open source, under an Apache 2.0 licence, with every system prompt readable in plain English markdown.</p>
+      <p>The move is not generosity — it is strategy. By publishing the agent instructions publicly, Anthropic solves the single biggest barrier to AI adoption in regulated finance: the black box problem. Compliance officers and risk committees cannot approve what they cannot audit, and every major financial institution deploying AI in production needs to show regulators exactly what instructions the system is running on. GitHub makes that possible.</p>
+      <p>The customisation layer matters equally — a Goldman Sachs does not want Anthropic's generic pitch agent, it wants one built on its own deal process, its own templates, its own data connectors, and its own approval chains. The open repo makes that straightforward. And with 22,700 stars and 3,100 forks in under two weeks, the ecosystem flywheel is already turning — every firm that forks and customises becomes more deeply embedded in Claude infrastructure, raising switching costs quietly and durably.</p>
+      <p>The headline said Anthropic launched ten AI agents for Wall Street. The reality is more consequential: Anthropic is making a serious bid to become the operating system that institutional finance runs on.</p>
+    </div>
+  </article>
+
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="f-logo"><div class="f-logo-sq">R</div>Rational Invest</a>
+  <div class="f-c">AI-powered portfolio intelligence</div>
+  <div class="f-links">
+    <a href="index.html#philosophy" class="f-a">Philosophy</a>
+    <a href="signals.html" class="f-a">Rational Signals</a>
+    <a href="#" class="f-a">Privacy</a>
+    <a href="#" class="f-a">Contact</a>
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('button,.nav-a,.f-a,.filter-btn,.story').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='14px';cur.style.height='14px';curR.style.width='42px';curR.style.height='42px';curR.style.borderColor='rgba(0,74,45,.5)';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='7px';cur.style.height='7px';curR.style.width='26px';curR.style.height='26px';curR.style.borderColor='rgba(0,74,45,.3)';});
+});
+
+/* REVEAL */
+const ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target);}});
+},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(function(r){ro.observe(r);});
+
+/* FILTER */
+const btns=document.querySelectorAll('.filter-btn');
+const stories=document.querySelectorAll('.story');
+btns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    btns.forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const f=btn.dataset.filter;
+    stories.forEach(s=>{
+      if(f==='all'||s.dataset.cat===f){
+        s.style.display='';
+      } else {
+        s.style.display='none';
+      }
+    });
+  });
+});
+
+/* MODAL */
+function showModal(){
+  document.getElementById('modal').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('modal-close-btn').addEventListener('click',function(){
+  document.getElementById('modal').classList.remove('show');
+  document.body.style.overflow='';
+});
+document.getElementById('modal').addEventListener('click',function(e){
+  if(e.target===this){this.classList.remove('show');document.body.style.overflow='';}
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){document.getElementById('modal').classList.remove('show');document.body.style.overflow='';}
+});
+
+/* FORM */
+(function(){
+  var form=document.getElementById('signals-form');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var emailEl=form.querySelector('input[type="email"]');
+    var btn=form.querySelector('button[type="submit"]');
+    if(!emailEl||!emailEl.value)return;
+    if(btn){btn.disabled=true;btn.textContent='Subscribing...';}
+    fetch('https://formspree.io/f/maqvvdnr',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email:emailEl.value,form_type:'Newsletter Signup — Rational Signals'})
+    })
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(data.ok||data.next){showModal();form.style.display='none';}
+      else{if(btn){btn.disabled=false;btn.textContent='Subscribe to Rational Signals';}}
+    })
+    .catch(function(){if(btn){btn.disabled=false;btn.textContent='Subscribe to Rational Signals';}});
+  });
+})();
+</script>
+</body>
+</html>
